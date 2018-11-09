@@ -52,7 +52,7 @@ public class NameAgeActivity extends AppCompatActivity {
                 Integer age = Integer.parseInt(spnAge.getSelectedItem().toString());
 
                 if (!name.isEmpty() &&
-                        name.matches("[a-zA-Z]+")) {
+                        name.matches("^[a-zA-Z\\s]*$")) {
                     MainAccountActivity.user.setName(name);
                 } else {
                     etName.setError("Enter a valid name.");
