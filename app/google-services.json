@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "779727585991",
+    "firebase_url": "https://patchtesting2-3eb1a.firebaseio.com",
+    "project_id": "patchtesting2-3eb1a",
+    "storage_bucket": "patchtesting2-3eb1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779727585991:android:39322e23e98e90ee",
+        "android_client_info": {
+          "package_name": "sg.zhixuan.patch2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "779727585991-facmgci9275l4tp2ugpf08864kbenk6s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sg.zhixuan.patch2",
+            "certificate_hash": "2df926822592db9807712ededf0155acaa1d7ef0"
+          }
+        },
+        {
+          "client_id": "779727585991-nucks2v8lf8kbso8cbkrfkfe2rq01ehj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsFKS2IllugtcvdsuZcDjRBVIZWLeJ_Oc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "779727585991-nucks2v8lf8kbso8cbkrfkfe2rq01ehj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

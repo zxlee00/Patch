@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0dfbb"
+    tools:context=".CreateApptDetails">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:autoSizeTextType="uniform"
+        android:text="CREATE APPOINTMENT"
+        android:gravity="center"
+        android:textColor="#5e2a40"
+        android:id="@+id/txtCreateAppt"
+        android:fontFamily="@font/titillium"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#000000"
+        android:layout_below="@+id/txtCreateAppt"
+        android:id="@+id/line"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/party"
+        android:orientation="horizontal"
+        android:layout_below="@+id/line"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/txtNewApptParty"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="75"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/titillium"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Group / Friend"
+            android:textColor="#000000" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:id="@+id/imgPartyPic"
+            android:src="@drawable/appt"
+            android:layout_weight="25"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/party">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NAME OF APPOINTMENT"
+                android:paddingTop="10dp"
+                android:textColor="#203f58"
+                android:id="@+id/apptname"
+                android:textSize="25sp"
+                android:fontFamily="@font/titillium"
+                android:gravity="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="15dp"
+                android:maxLength="40"
+                android:inputType="textMultiLine"
+                android:layout_below="@+id/apptname"
+                android:background="@drawable/edittextbox"
+                android:id="@+id/txtNewApptName"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textColor="#203f58"
+                android:text="DATE &amp; TIME"
+                android:fontFamily="@font/titillium"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/txtNewApptName"
+                android:gravity="center"
+                android:id="@+id/apptdatetime"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:id="@+id/date"
+                android:layout_below="@+id/apptdatetime"
+                android:weightSum="100">
+
+                <Button
+                    android:id="@+id/newApptDatePicker"
+                    android:background="@drawable/buttonstyle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="40"
+                    android:textColor="#203f58"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textStyle="bold"
+                    android:autoSizeTextType="uniform"
+                    android:text="DATE" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="60"
+                    android:textColor="#000000"
+                    android:fontFamily="@font/titillium"
+                    android:autoSizeTextType="uniform"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/dateTextView"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:id="@+id/time"
+                android:layout_below="@+id/date"
+                android:weightSum="100">
+
+                <Button
+                    android:id="@+id/newApptTimePicker"
+                    android:background="@drawable/buttonstyle"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="40"
+                    android:textColor="#203f58"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textStyle="bold"
+                    android:autoSizeTextType="uniform"
+                    android:text="TIME" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="60"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="15dp"
+                    android:fontFamily="@font/titillium"
+                    android:autoSizeTextType="uniform"
+                    android:id="@+id/timeTextView"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LOCATION"
+                android:paddingTop="10dp"
+                android:textColor="#203f58"
+                android:id="@+id/apptLocation"
+                android:textSize="25sp"
+                android:layout_below="@+id/time"
+                android:fontFamily="@font/titillium"
+                android:gravity="center" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="15dp"
+                android:inputType="textMultiLine"
+                android:layout_below="@+id/apptname"
+                android:maxLength="70"
+                android:background="@drawable/edittextbox"
+                android:id="@+id/txtNewApptLocation"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="DONE"
+                android:fontFamily="@font/titillium"
+                android:textColor="#203f58"
+                android:background="#FFFFFF"
+                android:autoSizeTextType="uniform"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@+id/time"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/btnCompleteAppt"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

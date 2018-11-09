@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainAccountActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#dfb992"
+    android:padding="40dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textAllCaps="true"
+        android:text="Sign Up"
+        android:textSize="36sp"
+        android:fontFamily="@font/titillium"
+        android:textColor="#9e6759"
+        android:layout_weight=".5"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:text="Select your hobbies/interests (can select multiple):"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            android:fontFamily="@font/titillium"
+            android:textColor="#203f58"/>
+
+        <GridView
+            android:id="@+id/gvHobby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3"
+            android:clickable="true"
+            android:layout_marginBottom="20dp">
+
+        </GridView>
+
+    </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:columnCount="2">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/arrow_back"
+            android:text="Back"
+            android:fontFamily="@font/titillium"
+            android:textAllCaps="true"
+            android:textSize="25dp"
+            android:layout_gravity="left"/>
+
+        <Button
+            android:id="@+id/btnComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/arrow_forward"
+            android:text="Complete"
+            android:fontFamily="@font/titillium"
+            android:textAllCaps="true"
+            android:textSize="25dp"
+            android:layout_column="1"/>
+
+    </GridLayout>
+
+</LinearLayout>
