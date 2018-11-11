@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,16 +24,21 @@ public class LoginActivity extends AppCompatActivity {
     EditText etPhoneNumber;
     Button btnBack, btnNext;
     String phoneNumber;
-    String mUserKey;
-    DatabaseReference mDatabase, mUserReference;
+    Boolean found = false;
     FirebaseAuth mAuth;
+    DatabaseReference mDatabase, mUserReference;
+    String mUserKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        etPhoneNumber = (EditText) findViewById(R.id.etPhoneNumber);
+        btnBack = (Button) findViewById(R.id.btnBack);
+        btnNext = (Button) findViewById(R.id.btnNext);
         mAuth = FirebaseAuth.getInstance();
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         MainAccountActivity.mUser = mAuth.getCurrentUser();
@@ -60,14 +64,11 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        etPhoneNumber = (EditText) findViewById(R.id.etPhoneNumber);
-        btnBack = (Button) findViewById(R.id.btnBack);
-        btnNext = (Button) findViewById(R.id.btnNext);
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, MainAccountActivity.class));
+                finish();
             }
         });
 
@@ -75,22 +76,47 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 phoneNumber = etPhoneNumber.getText().toString().trim();
-                if (!phoneNumber.isEmpty() &&
-                        phoneNumber.length() == 8 &&
-                        TextUtils.isDigitsOnly(phoneNumber)
-                        ) {
-                    Intent intent = new Intent(LoginActivity.this, LoginVerifyActivity.class);
-                    intent.putExtra("phoneNumber", "+65" + phoneNumber);
+                if (!phoneNumber.isEmpty() && phoneNumber.length() == 8 && TextUtils.isDigitsOnly(phoneNumber)) {
 
-                    startActivity(intent);
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users");
+                    mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                                if (userSnapshot.child("phoneNumber").getValue(String.class).equals("+65"+phoneNumber)) {
+                                    //user exists
+                                    finish();
+                                    Intent intent = new Intent(LoginActivity.this, LoginVerifyActivity.class);
+                                    intent.putExtra("phoneNumber", "+65" + phoneNumber);
+
+                                    startActivity(intent);
+                                    Log.d(TAG, "onDataChange: user exists");
+                                    found = true;
+                                }
+                            }
+
+                            if (found == false) {
+                                //user does not exist
+                                etPhoneNumber.setError("Invalid phone number.");
+                                etPhoneNumber.requestFocus();
+                                Log.d(TAG, "onDataChange: user does not exist");
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Log.d(TAG, "onCancelled: " + databaseError.getMessage());
+                        }
+                    });
+
+
                 } else {
                     etPhoneNumber.setError("Enter a valid phone number.");
                     etPhoneNumber.requestFocus();
-                    return;
                 }
             }
         });
     }
-
-
 }

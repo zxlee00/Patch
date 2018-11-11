@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DataSnapshot;
@@ -33,9 +34,8 @@ public class LoginVerifyActivity extends AppCompatActivity {
     EditText etCode;
     Button btnBack, btnNext;
     String phoneNumber, code, verificationCode;
-    FirebaseAuth mAuth;
-    User user;
     String mUserKey;
+    FirebaseAuth mAuth;
     DatabaseReference mDatabase, mUserReference;
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
 
@@ -93,7 +93,6 @@ public class LoginVerifyActivity extends AppCompatActivity {
                 } else {
                     etCode.setError("Enter a valid code.");
                     etCode.requestFocus();
-                    return;
                 }
             }
         });
@@ -101,6 +100,9 @@ public class LoginVerifyActivity extends AppCompatActivity {
 
     private void verifyCode(String code) {
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationCode, code);
+        if (credential == null) {
+            Log.d("ZZZ", "CREDENTIAL IS NULL");
+        }
         signInWithCredential(credential);
     }
 
@@ -113,30 +115,32 @@ public class LoginVerifyActivity extends AppCompatActivity {
                     mUserKey = MainAccountActivity.mUser.getUid();
                     mUserReference = FirebaseDatabase.getInstance().getReference().child("users").child(mUserKey);
 
-                    ValueEventListener userListener = new ValueEventListener() {
+                    mUserReference.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            user = dataSnapshot.getValue(User.class);
+                            MainAccountActivity.user = dataSnapshot.getValue(User.class);
+                            Log.d(TAG, "onComplete: " + MainAccountActivity.user.getName() + MainAccountActivity.mUser.getPhoneNumber());
+
+                            finish();
+                            Intent intent = new Intent(LoginVerifyActivity.this, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                             Log.d(TAG, "onCancelled: ", databaseError.toException());
                         }
-                    };
-                    mUserReference.addValueEventListener(userListener);
-
-                    Log.d(TAG, "onComplete: " + user);
-                    //Toast.makeText(LoginVerifyActivity.this, "Signed in as " + user.getUid(), Toast.LENGTH_LONG).show();
-
-                    //TODO set profileactivity.class to home page, user data is alr set up
-                    Intent intent = new Intent(LoginVerifyActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-
+                    });
                 } else {
-                    Toast.makeText(LoginVerifyActivity.this, "Wrong verification code, please try again.", Toast.LENGTH_LONG).show();
-                    //Log.d("ZZZ", task.getException().getMessage());
+                    if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                        etCode.setError("Invalid code, new code will be sent.");
+                        etCode.requestFocus();
+                        sendCode(phoneNumber);
+                    } else {
+                        Toast.makeText(LoginVerifyActivity.this, "Wrong verification code, please try again.", Toast.LENGTH_LONG).show();
+                        //Log.d(TAG, "onComplete: ", task.getException());
+                    }
                 }
             }
         });

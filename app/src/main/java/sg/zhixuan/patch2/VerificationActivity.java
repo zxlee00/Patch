@@ -17,15 +17,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class VerificationActivity extends AppCompatActivity {
@@ -34,7 +31,6 @@ public class VerificationActivity extends AppCompatActivity {
     EditText etCode;
     Button btnBack, btnNext;
     String verificationCode;
-    FirebaseAuth mAuth;
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
     static DatabaseReference mDatabase;
 
@@ -46,11 +42,10 @@ public class VerificationActivity extends AppCompatActivity {
         etCode = (EditText) findViewById(R.id.etCode);
         btnBack = (Button) findViewById(R.id.btnBack);
         btnNext = (Button) findViewById(R.id.btnNext);
-        mAuth = FirebaseAuth.getInstance();
+        MainAccountActivity.mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
             @Override
             public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 super.onCodeSent(s, forceResendingToken);
@@ -110,7 +105,7 @@ public class VerificationActivity extends AppCompatActivity {
     }
 
     private void signInWithCredential(PhoneAuthCredential credential) {
-        mAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        MainAccountActivity.mAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
@@ -136,10 +131,9 @@ public class VerificationActivity extends AppCompatActivity {
                             });
 
                     startActivity(intent);
-
                 } else {
                     Toast.makeText(VerificationActivity.this, "Wrong verification code, please try again.", Toast.LENGTH_LONG).show();
-                    Log.d(TAG, "onComplete: " + task.getException().getMessage());
+                    //Log.d(TAG, "onComplete: " + task.getException().getMessage());
                 }
             }
         });

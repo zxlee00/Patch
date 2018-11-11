@@ -43,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtMatchup, txtAppt, txtChat, txtProfile;
     ImageView imgProfile, imgMatchup, imgChat, imgAppt;
     Button btnSignOut;
-    static String nameOfUser;
-    String uid;
+    static String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,21 +71,6 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         uid = mAuth.getUid();
-        userRef = FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("name");
-
-        userRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                nameOfUser = null;
-                nameOfUser = dataSnapshot.getValue(String.class);
-                Log.d("ZZZ", "NAME OF USER:" + nameOfUser);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         btnAppt.setOnClickListener(new View.OnClickListener() {
             @Override

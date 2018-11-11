@@ -2,12 +2,20 @@ package sg.zhixuan.patch2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class PhoneNumberActivity extends AppCompatActivity {
 
@@ -34,21 +42,39 @@ public class PhoneNumberActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phoneNumber = etPhoneNumber.getText().toString().trim();
+                final String phoneNumber = etPhoneNumber.getText().toString().trim();
 
-                if (!phoneNumber.isEmpty() &&
-                        phoneNumber.length() == 8 &&
-                        TextUtils.isDigitsOnly(phoneNumber)
-                        ) {
-                    MainAccountActivity.user.setPhoneNumber("+65" + phoneNumber);
+                if (!phoneNumber.isEmpty() && phoneNumber.length() == 8 && TextUtils.isDigitsOnly(phoneNumber)) {
+
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
+                    mDatabase.orderByChild("phoneNumber").equalTo("+65" + phoneNumber).addListenerForSingleValueEvent(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                //user exists
+                                etPhoneNumber.setError("Phone number already in use.");
+                                etPhoneNumber.requestFocus();
+                                Log.d(TAG, "onDataChange: user exists");
+                            } else {
+                                //user does not exist
+                                MainAccountActivity.user.setPhoneNumber("+65" + phoneNumber);
+                                Intent intent = new Intent(PhoneNumberActivity.this, VerificationActivity.class);
+                                startActivity(intent);
+                                Log.d(TAG, "onDataChange: user does not exist");
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                            Log.d(TAG, "onCancelled: " + databaseError.getMessage());
+                        }
+                    });
+
                 } else {
                     etPhoneNumber.setError("Enter a valid phone number.");
                     etPhoneNumber.requestFocus();
-                    return;
                 }
-
-                Intent intent = new Intent(PhoneNumberActivity.this, VerificationActivity.class);
-                startActivity(intent);
             }
         });
     }

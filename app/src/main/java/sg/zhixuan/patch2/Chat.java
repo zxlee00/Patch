@@ -38,7 +38,7 @@ public class Chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        UserDetails.username = MainActivity.nameOfUser;
+        UserDetails.uid = MainActivity.uid;
 
         sdf = new SimpleDateFormat("EEE, MMM d 'AT' HH:mm a");
 
@@ -50,8 +50,8 @@ public class Chat extends AppCompatActivity {
         scrollView.fullScroll(View.FOCUS_DOWN);
 
         Firebase.setAndroidContext(this);
-        reference1 = new Firebase("https://patchtesting2-3eb1a.firebaseio.com/messages/" + UserDetails.username + "_" + UserDetails.chatWith);
-        reference2 = new Firebase("https://patchtesting2-3eb1a.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.username);
+        reference1 = new Firebase("https://patchtesting2-3eb1a.firebaseio.com/messages/" + UserDetails.uid + "_" + UserDetails.chatWith);
+        reference2 = new Firebase("https://patchtesting2-3eb1a.firebaseio.com/messages/" + UserDetails.chatWith + "_" + UserDetails.uid);
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +62,7 @@ public class Chat extends AppCompatActivity {
                     Map<String, String> map = new HashMap<String, String>();
                     String currentDateandTime = sdf.format(new Date());
                     map.put("message", messageText);
-                    map.put("user", UserDetails.username);
+                    map.put("user", UserDetails.uid);
                     map.put("time", currentDateandTime);
                     reference1.push().setValue(map);
                     reference2.push().setValue(map);
@@ -80,11 +80,11 @@ public class Chat extends AppCompatActivity {
                 String userName = map.get("user").toString();
                 String time = map.get("time").toString();
 
-                if(userName.equals(UserDetails.username)){
+                if(userName.equals(UserDetails.uid)){
                     addMessageBox("You " , message,time, 1);
                 }
                 else{
-                    addMessageBox(UserDetails.chatWith , message,time, 2);
+                    addMessageBox(UserDetails.contactname , message,time, 2);
                 }
             }
 

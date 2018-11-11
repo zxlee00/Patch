@@ -23,10 +23,11 @@ public class Users extends AppCompatActivity {
     ListView usersList;
     TextView noUsersText;
     ArrayList<String> al = new ArrayList<>();
+    ArrayList<String> contactNameList = new ArrayList<String>();
     ArrayList<String> contactUIDList = new ArrayList<String>();
     int totalUsers = 0;
     ProgressDialog pd;
-    String user = UserDetails.username;
+    String user = UserDetails.uid;
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
     FirebaseAuth mAuth;
@@ -45,7 +46,6 @@ public class Users extends AppCompatActivity {
         Log.d("ZZZ", "UID" + uid);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("contacts").child(uid);
 
-
         pd = new ProgressDialog(Users.this);
         pd.setMessage("Loading...");
         pd.show();
@@ -56,6 +56,7 @@ public class Users extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 UserDetails.chatWith = contactUIDList.get(position);
+                UserDetails.contactname = contactNameList.get(position);
                 startActivity(new Intent(Users.this, Chat.class));
             }
         });
@@ -66,17 +67,19 @@ public class Users extends AppCompatActivity {
         databaseReference.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
             @Override
             public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot dataSnapshot) {
+                contactNameList.clear();
                 contactUIDList.clear();
-                for(com.google.firebase.database.DataSnapshot uidSnapshot : dataSnapshot.getChildren()) {
+                for(com.google.firebase.database.DataSnapshot chatUserSnapshot : dataSnapshot.getChildren()) {
                     totalUsers++;
-                    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(uidSnapshot.getKey()).child("name");
+                    DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(chatUserSnapshot.getKey());
                     dbRef.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot snapshot) {
-                            contactUIDList.add(snapshot.getValue(String.class));
+                            contactNameList.add(snapshot.child("name").getValue(String.class));
+                            contactUIDList.add(snapshot.child("uid").getValue(String.class));
                             noUsersText.setVisibility(View.GONE);
                             usersList.setVisibility(View.VISIBLE);
-                            usersList.setAdapter(new ArrayAdapter<String>(Users.this, android.R.layout.simple_list_item_1, contactUIDList));
+                            usersList.setAdapter(new ArrayAdapter<String>(Users.this, android.R.layout.simple_list_item_1, contactNameList));
                         }
 
                         @Override
