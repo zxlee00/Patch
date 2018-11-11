@@ -26,8 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     String phoneNumber;
     Boolean found = false;
     FirebaseAuth mAuth;
-    DatabaseReference mDatabase, mUserReference;
-    String mUserKey;
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,29 +39,6 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        MainAccountActivity.mUser = mAuth.getCurrentUser();
-        if (MainAccountActivity.mUser != null) {
-            mUserKey = MainAccountActivity.mUser.getUid();
-            mUserReference = FirebaseDatabase.getInstance().getReference().child("users").child(mUserKey);
-
-            ValueEventListener userListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    MainAccountActivity.user = dataSnapshot.getValue(User.class);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Log.d(TAG, "onCancelled: ", databaseError.toException());
-                }
-            };
-            mUserReference.addValueEventListener(userListener);
-            Log.d(TAG, "onCreate: " + MainAccountActivity.user + MainAccountActivity.mUser.getUid());
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            finish();
-            return;
-        }
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
