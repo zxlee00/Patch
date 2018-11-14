@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".MatchUpOptions">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:gravity="center"
+        android:background="@drawable/bottomborder"
+        android:id="@+id/btnNewMatchUp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/newmatchup"
+            android:id="@+id/matchupimg"
+            android:layout_weight="70"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:fontFamily="@font/titillium"
+            android:textAlignment="center"
+            android:text="NEW MATCH UP"
+            android:id="@+id/matchuptext"
+            android:textColor="#203f58"
+            android:autoSizeTextType="uniform"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:gravity="center"
+        android:background="#f0dfbb"
+        android:id="@+id/btnMatchUpConversations">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="55"
+            android:id="@+id/conversationimg"
+            android:src="@drawable/matchupconversation"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/titillium"
+            android:textAlignment="center"
+            android:text="CONVERSATIONS"
+            android:textColor="#203f58"
+            android:id="@+id/conversationtext"
+            android:autoSizeTextType="uniform"/>
+
+    </LinearLayout>
+
+</LinearLayout>

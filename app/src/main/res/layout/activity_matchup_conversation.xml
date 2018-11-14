@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#f0dfbb"
+    tools:context=".MatchupConversationActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:text="CONVERSATIONS"
+        android:textColor="#782e2c"
+        android:padding="10dp"
+        android:background="@drawable/bottomborder"
+        android:fontFamily="@font/titillium"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/conversation"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:background="#c7cdd8"
+        android:layout_weight="7">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="80"
+            android:layout_margin="3dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:id="@+id/btnCheckRequests"
+            android:fontFamily="@font/titillium"
+            android:autoSizeTextType="uniform"
+            android:text="CHECK REQUEST"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="83"
+        android:id="@+id/rvMatchUpList"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:weightSum="100"
+    android:background="@drawable/bottomborder">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="70"
+        android:text="USER REQUEST NAME"
+        android:gravity="center"
+        android:autoSizeTextType="uniform"
+        android:padding="15dp"
+        android:textColor="#203f58"
+        android:fontFamily="@font/titillium"
+        android:id="@+id/txtRequestUserName"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="30"
+        android:weightSum="100"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:text="ACCEPT"
+            android:id="@+id/btnAccept"
+            android:background="#ffffff"
+            android:textColor="#203f58"
+            android:padding="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/titillium"
+            android:autoSizeTextType="uniform"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:text="DECLINE"
+            android:padding="5dp"
+            android:id="@+id/btnDecline"
+            android:background="#ffffff"
+            android:textColor="#203f58"
+            android:fontFamily="@font/titillium"
+            android:autoSizeTextType="uniform"/>
+
+    </LinearLayout>
+
+</LinearLayout>

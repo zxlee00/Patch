@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0dfbb"
+    android:weightSum="100"
+    android:orientation="vertical"
+    tools:context=".MatchUpActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:text="MATCH UP"
+        android:textColor="#782e2c"
+        android:padding="10dp"
+        android:visibility="gone"
+        android:background="@drawable/bottomborder"
+        android:fontFamily="@font/titillium"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/matchup"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/progress_bar"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:autoSizeTextType="uniform"
+        android:padding="15dp"
+        android:fontFamily="@font/titillium"
+        android:textColor="#203f58"
+        android:textAlignment="center"
+        android:id="@+id/txtSuccessful"
+        android:visibility="gone"
+        android:text="YOU HAVE BEEN MATCHED UP SUCCESSFULLY!" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:autoSizeTextType="uniform"
+        android:layout_weight="12"
+        android:gravity="center"
+        android:layout_below="@id/txtSuccessful"
+        android:fontFamily="@font/titillium"
+        android:textStyle="bold"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:visibility="gone"
+        android:textColor="#000000"
+        android:id="@+id/txtName"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
+        android:paddingLeft="20dp"
+        android:gravity="center"
+        android:paddingRight="20dp"
+        android:textColor="#203b58"
+        android:fontFamily="@font/titillium"
+        android:autoSizeTextType="uniform"
+        android:layout_below="@+id/txtName"
+        android:visibility="gone"
+        android:id="@+id/txtSameHobbies"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
+        android:paddingLeft="20dp"
+        android:gravity="center"
+        android:paddingRight="20dp"
+        android:textColor="#203b58"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/titillium"
+        android:visibility="gone"
+        android:layout_below="@id/txtSameHobbies"
+        android:id="@+id/txtMatchedUpUserHobby"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:visibility="gone"
+        android:id="@+id/failure"
+        android:gravity="center"
+        android:padding="20dp"
+        android:weightSum="100"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:autoSizeTextType="uniform"
+            android:layout_weight="75"
+            android:textAlignment="center"
+            android:id="@+id/txtFailure"
+            android:fontFamily="@font/titillium"
+            android:textColor="#203b58"
+            android:layout_marginBottom="20dp"
+            android:text="There are no other users looking to be matched up right now.\n\nTry again later?"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="15"
+            android:autoSizeTextType="uniform"
+            android:text="SURE"
+            android:id="@+id/btnSure"
+            android:background="#ffffff"
+            android:fontFamily="@font/titillium"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:layout_below="@id/txtMatchedUpUserHobby"
+        android:autoSizeTextType="uniform"
+        android:textColor="#203b58"
+        android:padding="20dp"
+        android:fontFamily="@font/titillium"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="MATCH UP TO THIS USER?"
+        android:id="@+id/txtQn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:text="YES"
+        android:id="@+id/btnYes"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/titillium"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:padding="5dp"
+        android:background="#ffffff"
+        android:visibility="gone"
+        android:layout_below="@+id/txtQn"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:padding="5dp"
+        android:text="NO"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/btnNo"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#ffffff"
+        android:fontFamily="@font/titillium"
+        android:visibility="gone"
+        android:layout_below="@+id/btnYes"/>
+
+</LinearLayout>

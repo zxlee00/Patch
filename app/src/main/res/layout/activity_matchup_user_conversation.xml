@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:orientation="vertical"
+    tools:context=".MatchupUserConversationActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:text="MATCH UP USER"
+        android:textColor="#782e2c"
+        android:padding="10dp"
+        android:background="@drawable/bottomborder"
+        android:fontFamily="@font/titillium"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/txtMatchupUser"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:background="#c7cdd8"
+        android:layout_weight="15">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:padding="3dp"
+            android:textColor="#203f58"
+            android:autoSizeTextType="uniform"
+            android:text="Want to be friends?"
+            android:gravity="center"
+            android:fontFamily="@font/titillium"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:layout_marginBottom="5dp"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:id="@+id/btnSendRequest"
+            android:fontFamily="@font/titillium"
+            android:autoSizeTextType="uniform"
+            android:text="SEND REQUEST"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="75">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/messagetext"
+            android:id="@+id/scrollView">
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/layout1">
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+        <include
+            layout="@layout/message_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/messagetext"
+            android:layout_margin="5dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
