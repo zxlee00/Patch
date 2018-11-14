@@ -1,5 +1,7 @@
 package sg.zhixuan.patch2;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +26,7 @@ public class MainAccountActivity extends AppCompatActivity {
     static User user = new User();
     String mUserKey;
     DatabaseReference mUserReference;
+    AlertDialog.Builder alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,31 @@ public class MainAccountActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainAccountActivity.this, NameAgeActivity.class));
+                if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                    alertDialog = new AlertDialog.Builder(MainAccountActivity.this);
+                    alertDialog.setTitle("Sign Out")
+                            .setMessage("You are currently logged in to another account. If you want to proceed on with sign up, you will be logged out of your current account. Are you sure?")
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.cancel();
+                                }
+                            })
+                            .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    FirebaseAuth.getInstance().signOut();
+
+                                    Intent intent = new Intent(MainAccountActivity.this, NameAgeActivity.class);
+                                    startActivity(intent);
+                                }
+                            })
+                            .show();
+
+                } else {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(MainAccountActivity.this, NameAgeActivity.class));
+                }
             }
         });
 

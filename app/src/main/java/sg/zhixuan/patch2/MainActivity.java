@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     DatabaseReference mDatabase;
-    DatabaseReference userRef;
     TextView txtMatchup, txtAppt, txtChat, txtProfile;
     ImageView imgProfile, imgMatchup, imgChat, imgAppt;
     Button btnSignOut;
@@ -72,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         firebaseUser = mAuth.getCurrentUser();
         uid = mAuth.getUid();
 
+        FirebaseDatabase.getInstance().getReference().child("matchup").child("lookingForMatchup").child(uid).setValue("");
+
         btnAppt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,12 +87,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnProfile.setOnClickListener(new View.OnClickListener() {
+/*        btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, TestAddingFriends.class));
             }
-        });
+        });*/
 
         btnProfile.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         btnMatchup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, UploadImage.class));
+                startActivity(new Intent(MainActivity.this, MatchUpOptions.class));
             }
         });
 

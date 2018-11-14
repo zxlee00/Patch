@@ -14,37 +14,70 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".AppointmentActivity" />
-        <activity android:name=".CreateApptGroup" />
-        <activity android:name=".CreateApptDetails" />
-        <activity android:name=".MainAccountActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AppointmentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateApptGroup"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreateApptDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainAccountActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".TestAddingFriends"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".UploadImage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NameAgeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PhoneNumberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VerificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HobbyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginVerifyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Users"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Chat"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".TestAddingFriends" />
-        <activity android:name=".UploadImage"></activity>
+        <receiver android:name=".AlertReceiver" />
 
-        <activity android:name=".NameAgeActivity"/>
-        <activity android:name=".PhoneNumberActivity"/>
-        <activity android:name=".VerificationActivity"/>
-        <activity android:name=".ProfileActivity"/>
-        <activity android:name=".HobbyActivity"/>
-
-        <activity android:name=".LoginVerifyActivity"/>
-        <activity android:name=".Users" />
-        <activity android:name=".Chat" />
-
-        <receiver android:name=".AlertReceiver"/>
-
+        <activity
+            android:name=".MatchUpActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MatchUpOptions" />
+        <activity android:name=".MatchupConversationActivity" />
+        <activity android:name=".MatchupUserConversationActivity" />
+        <activity android:name=".RequestActivity"></activity>
     </application>
 
 </manifest>
