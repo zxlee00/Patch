@@ -22,6 +22,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -83,6 +85,9 @@ public class CreateApptDetails extends AppCompatActivity {
         txtNewApptParty.setText(UserContactAdapter.apptPartySelected);
         Glide.with(CreateApptDetails.this)
                 .load(apptPartyImageURLSelected)
+                .apply(new RequestOptions()
+                        .skipMemoryCache(true)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE))
                 .into(imgPartyPic);
 
         //getting current date

@@ -21,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -126,6 +128,9 @@ public class AppointmentActivity extends AppCompatActivity {
                         Log.d("ZZZ", dataSnapshot.getKey());
                         Glide.with(AppointmentActivity.this)
                                 .load(dataSnapshot.getValue(String.class))
+                                .apply(new RequestOptions()
+                                .skipMemoryCache(true)
+                                .diskCacheStrategy(DiskCacheStrategy.NONE))
                                 .into(holder.imgApptParty);
                     }
 

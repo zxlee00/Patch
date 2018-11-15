@@ -22,7 +22,7 @@ import java.util.List;
 
 public class MatchupConversationActivity extends AppCompatActivity {
 
-    DatabaseReference matchedupUsersRef;
+    DatabaseReference matchedupUsersRef, userRef;
     List<MatchUpUser> matchedUpUsersList;
     RecyclerView rvMatchedUpList;
     MatchUpListAdapter matchUpListAdapter;
@@ -40,22 +40,36 @@ public class MatchupConversationActivity extends AppCompatActivity {
         //Todo: Retrieve list of matched up people. Design interface such that they can send invitation to one another.
         //Todo: Use some sort of key word?
 
+        userRef = FirebaseDatabase.getInstance().getReference().child("users");
         matchedupUsersRef = FirebaseDatabase.getInstance().getReference().child("matchup").child(MainActivity.uid);
         matchedupUsersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 matchedUpUsersList.clear();
 
-                for (DataSnapshot matchupSnapshot : dataSnapshot.getChildren()) {
-                    matchedUpUsersList.add(new MatchUpUser(matchupSnapshot.child("name").getValue(String.class),
-                                                    matchupSnapshot.getKey(),
-                                                    matchupSnapshot.child("type").getValue(String.class)));
-                }
+                for (final DataSnapshot matchupSnapshot : dataSnapshot.getChildren()) {
+                    userRef.child(matchupSnapshot.getKey()).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            matchedUpUsersList.add(new MatchUpUser(snapshot.getValue(String.class),
+                                    matchupSnapshot.getKey(),
+                                    matchupSnapshot.child("type").getValue(String.class)));
+                            Log.d("ZZZ", "CHECK ID:" + snapshot.getValue(String.class));
+                            Log.d("ZZZ", "TYPE:" + matchupSnapshot.child("type").getValue(String.class));
+                            Log.d("ZZZ", "KEY:" + matchupSnapshot.getKey());
 
-                matchUpListAdapter = new MatchUpListAdapter(MatchupConversationActivity.this, matchedUpUsersList);
-                rvMatchedUpList.setLayoutManager(new LinearLayoutManager(MatchupConversationActivity.this));
-                rvMatchedUpList.setItemAnimator(new DefaultItemAnimator());
-                rvMatchedUpList.setAdapter(matchUpListAdapter);
+                            matchUpListAdapter = new MatchUpListAdapter(MatchupConversationActivity.this, matchedUpUsersList);
+                            rvMatchedUpList.setLayoutManager(new LinearLayoutManager(MatchupConversationActivity.this));
+                            rvMatchedUpList.setItemAnimator(new DefaultItemAnimator());
+                            rvMatchedUpList.setAdapter(matchUpListAdapter);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
             }
 
             @Override

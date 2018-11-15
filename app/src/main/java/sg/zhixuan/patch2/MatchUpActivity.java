@@ -194,9 +194,9 @@ public class MatchUpActivity extends AppCompatActivity {
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                matchupReference.child(MainActivity.uid).child(matchedUpUser.uid).child("name").setValue(matchedUpUser.name);
+//                matchupReference.child(MainActivity.uid).child(matchedUpUser.uid).child("name").setValue(matchedUpUser.name);
                 matchupReference.child(MainActivity.uid).child(matchedUpUser.uid).child("type").setValue("foundByUser");
-                matchupReference.child(matchedUpUser.uid).child(MainActivity.uid).child("name").setValue(userName);
+  //              matchupReference.child(matchedUpUser.uid).child(MainActivity.uid).child("name").setValue(userName);
                 matchupReference.child(matchedUpUser.uid).child(MainActivity.uid).child("type").setValue("userFoundByOthers");
                 MatchUpActivity.this.finish();
             }
