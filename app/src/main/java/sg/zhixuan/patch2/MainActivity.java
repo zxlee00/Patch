@@ -87,12 +87,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-/*        btnProfile.setOnClickListener(new View.OnClickListener() {
+        btnProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TestAddingFriends.class));
+                startActivity(new Intent(MainActivity.this, ProfilePageActivity.class));
             }
-        });*/
+        });
 
         btnProfile.setOnTouchListener(new View.OnTouchListener() {
             @Override

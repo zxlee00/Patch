@@ -35,7 +35,7 @@ public class PhoneNumberActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(PhoneNumberActivity.this, NameAgeActivity.class));
+                finish();
             }
         });
 

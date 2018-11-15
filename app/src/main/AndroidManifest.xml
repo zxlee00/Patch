@@ -78,6 +78,10 @@
         <activity android:name=".MatchupConversationActivity" />
         <activity android:name=".MatchupUserConversationActivity" />
         <activity android:name=".RequestActivity"></activity>
+
+        <activity android:name=".ProfilePageActivity"/>
+        <activity android:name=".ProfileEditActivity"/>
+
     </application>
 
 </manifest>

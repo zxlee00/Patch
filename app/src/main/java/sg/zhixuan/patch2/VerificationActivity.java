@@ -74,7 +74,7 @@ public class VerificationActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(VerificationActivity.this, PhoneNumberActivity.class));
+                finish();
             }
         });
 

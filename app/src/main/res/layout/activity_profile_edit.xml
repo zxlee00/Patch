@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0dfbb">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:autoSizeTextType="uniform"
+        android:text="EDIT PROFILE"
+        android:gravity="center"
+        android:textColor="#5e2a40"
+        android:id="@+id/txtProfile"
+        android:fontFamily="@font/titillium"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#000000"
+        android:layout_below="@+id/txtProfile"
+        android:id="@+id/line"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/line"
+        android:layout_above="@id/btnDone"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="100"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/ivProfile"
+                android:clickable="true"
+                android:src="@mipmap/ic_launcher"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/titillium"
+                    android:gravity="center"
+                    android:text="Name: "
+                    android:textColor="#5e2a40"
+                    android:autoSizeTextType="uniform"/>
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvName"
+                    android:background="@drawable/edit_text_box1"
+                    android:inputType="textPersonName"
+                    android:padding="15dp"/>
+
+                <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/titillium"
+                    android:gravity="center"
+                    android:text="Age: "
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/etName"
+                    android:textColor="#5e2a40"/>
+
+                <Spinner
+                    android:id="@+id/spnAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_box1"
+                    android:layout_below="@+id/tvAge"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/tvHobbies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="25sp"
+                    android:fontFamily="@font/titillium"
+                    android:layout_below="@id/spnAge"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="Hobbies: "
+                    android:textColor="#5e2a40" />
+
+                <GridView
+                    android:id="@+id/gvHobby"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:layout_below="@+id/tvHobbies"
+                    android:numColumns="2" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="DONE"
+        android:fontFamily="@font/titillium"
+        android:textColor="#203f58"
+        android:background="#FFFFFF"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/btnDone"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
