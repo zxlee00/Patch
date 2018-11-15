@@ -81,6 +81,7 @@ public class MatchupConversationActivity extends AppCompatActivity {
         btnCheckRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(MatchupConversationActivity.this, RequestActivity.class));
             }
         });

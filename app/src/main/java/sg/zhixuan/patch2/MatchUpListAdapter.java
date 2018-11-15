@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -79,6 +80,7 @@ public class MatchUpListAdapter extends RecyclerView.Adapter<MatchUpListAdapter.
                                 matchupRef.child(matchedUpUserList.get(position).uid).child(MainActivity.uid).removeValue();
                                 requestRef.child(matchedUpUserList.get(position).uid).child(MainActivity.uid).removeValue();
                                 requestRef.child(MainActivity.uid).child(matchedUpUserList.get(position).uid).removeValue();
+                                notifyDataSetChanged();
 
                             }
                         })
@@ -105,6 +107,26 @@ public class MatchUpListAdapter extends RecyclerView.Adapter<MatchUpListAdapter.
 
                     }
                 });
+            }
+        });
+
+        holder.itemView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        v.setBackgroundResource(R.drawable.pressedbottomborder);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        v.setBackgroundResource(R.drawable.bottomborder);
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                        v.setBackgroundResource(R.drawable.bottomborder);
+                        break;
+                }
+
+                return false;
             }
         });
     }

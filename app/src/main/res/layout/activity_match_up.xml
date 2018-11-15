@@ -41,7 +41,7 @@
         android:textAlignment="center"
         android:id="@+id/txtSuccessful"
         android:visibility="gone"
-        android:text="YOU HAVE BEEN MATCHED UP SUCCESSFULLY!" />
+        android:text="WE HAVE FOUND A USER BASED ON YOUR HOBBIES!" />
 
     <TextView
         android:layout_width="match_parent"

@@ -118,7 +118,19 @@ public class AppointmentActivity extends AppCompatActivity {
                 holder.txtApptTime.setText(appointment.apptTime);
                 holder.txtApptDate.setText(appointment.apptDate);
                 holder.txtApptTitle.setText(appointment.apptName);
-                holder.txtApptParty.setText(appointment.apptParty);
+
+                DatabaseReference userNameRef = FirebaseDatabase.getInstance().getReference().child("users").child(appointment.apptPartyID).child("name");
+                userNameRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot nameSnap) {
+                        holder.txtApptParty.setText(nameSnap.getValue(String.class));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
                 DatabaseReference imageRef = FirebaseDatabase.getInstance().getReference().child("users").child(appointment.apptPartyID).child("profilePic");
                 ValueEventListener imageListener = new ValueEventListener() {

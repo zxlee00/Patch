@@ -66,6 +66,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                                 matchUpRef.child(request.uid).child(MainActivity.uid).removeValue();
                                 contactRef.child(MainActivity.uid).child(request.uid).child("type").setValue("User");
                                 contactRef.child(request.uid).child(MainActivity.uid).child("type").setValue("User");
+                                notifyDataSetChanged();
                                 Toast.makeText(context, "All your previous texts with " + request.name + " will be moved over to the 'CHATS' page.", Toast.LENGTH_LONG).show();
                             }
                         })
@@ -89,6 +90,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 requestRef.child(MainActivity.uid).child(request.uid).removeValue();
+                                notifyDataSetChanged();
                             }
                         })
                         .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -100,6 +102,10 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                         .show();
             }
         });
+    }
+
+    public void changeList(List<Request> l) {
+        this.requestList = l;
     }
 
     @Override

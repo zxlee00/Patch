@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,15 +37,30 @@ public class RequestActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 requestList.clear();
+                Log.d("ZZZ", "REQUEST CHANGED");
 
-                for (DataSnapshot requestSnapshot : dataSnapshot.getChildren()) {
-                    requestList.add(new Request(requestSnapshot.getValue(String.class), requestSnapshot.getKey()));
+                for (final DataSnapshot requestSnapshot : dataSnapshot.getChildren()) {
+
+                    DatabaseReference nameRef = FirebaseDatabase.getInstance().getReference().child("users").child(requestSnapshot.getKey()).child("name");
+                    nameRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot nameSnapshot) {
+                            requestList.add(new Request(nameSnapshot.getValue(String.class), requestSnapshot.getKey()));
+
+                            requestAdapter = new RequestAdapter(RequestActivity.this, requestList);
+                            requestAdapter.changeList(requestList);
+                            requestAdapter.notifyDataSetChanged();
+                            rvRequests.setLayoutManager(new LinearLayoutManager(RequestActivity.this));
+                            rvRequests.setItemAnimator(new DefaultItemAnimator());
+                            rvRequests.setAdapter(requestAdapter);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                 }
-
-                requestAdapter = new RequestAdapter(RequestActivity.this, requestList);
-                rvRequests.setLayoutManager(new LinearLayoutManager(RequestActivity.this));
-                rvRequests.setItemAnimator(new DefaultItemAnimator());
-                rvRequests.setAdapter(requestAdapter);
             }
 
             @Override
