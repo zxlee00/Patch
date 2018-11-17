@@ -18,7 +18,7 @@ public class NameAgeActivity extends AppCompatActivity {
 
     private static final String TAG = "NameAgeActivity";
     EditText etName;
-    Spinner spnAge;
+    Spinner spnAge, spnGender;
     Button btnBack, btnNext;
 
     @Override
@@ -30,6 +30,7 @@ public class NameAgeActivity extends AppCompatActivity {
         spnAge = (Spinner) findViewById(R.id.spnAge);
         btnBack = (Button) findViewById(R.id.btnBack);
         btnNext = (Button) findViewById(R.id.btnNext);
+        spnGender = (Spinner)findViewById(R.id.spnGender);
 
         List age = new ArrayList<Integer>();
         for (int i = 55; i <= 100; i++) {
@@ -37,6 +38,12 @@ public class NameAgeActivity extends AppCompatActivity {
         }
         ArrayAdapter<Integer> spnArrayAdapter = new ArrayAdapter<Integer>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, age);
         spnAge.setAdapter(spnArrayAdapter);
+
+        List gender = new ArrayList<String>();
+        gender.add("Female");
+        gender.add("Male");
+        ArrayAdapter<String> spnGenderAdapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, gender);
+        spnGender.setAdapter(spnGenderAdapter);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +57,7 @@ public class NameAgeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = etName.getText().toString().trim();
                 Integer age = Integer.parseInt(spnAge.getSelectedItem().toString());
+                String gender = spnGender.getSelectedItem().toString();
 
                 if (!name.isEmpty() &&
                         name.matches("^[a-zA-Z\\s]*$")) {
@@ -61,6 +69,7 @@ public class NameAgeActivity extends AppCompatActivity {
                 }
 
                 MainAccountActivity.user.setAge(age);
+                MainAccountActivity.user.setGender(gender);
                 Intent intent = new Intent(NameAgeActivity.this, PhoneNumberActivity.class);
                 startActivity(intent);
             }

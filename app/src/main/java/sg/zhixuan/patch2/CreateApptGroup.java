@@ -6,6 +6,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +24,7 @@ public class CreateApptGroup extends AppCompatActivity {
     UserContactAdapter userContactAdapter;
     List<String> contactList;
     List<String> contactIDList;
+    Button btnApptGroupToApptActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class CreateApptGroup extends AppCompatActivity {
         rvApptPartyList = (RecyclerView)findViewById(R.id.rvApptPartyList);
         contactList = AppointmentActivity.contactList;
         contactIDList = AppointmentActivity.contactIDList;
+        btnApptGroupToApptActivity = (Button)findViewById(R.id.btnApptGroupToApptActivity);
 
         final List<User> contactNameList = new ArrayList<User>();
 
@@ -55,5 +59,12 @@ public class CreateApptGroup extends AppCompatActivity {
         rvApptPartyList.setLayoutManager(new LinearLayoutManager(this));
         rvApptPartyList.setItemAnimator(new DefaultItemAnimator());
         rvApptPartyList.setAdapter(userContactAdapter);
+
+        btnApptGroupToApptActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

@@ -30,69 +30,191 @@
         android:layout_gravity="center"
         android:id="@+id/progress_bar"/>
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="15"
-        android:autoSizeTextType="uniform"
-        android:padding="15dp"
-        android:fontFamily="@font/titillium"
-        android:textColor="#203f58"
-        android:textAlignment="center"
-        android:id="@+id/txtSuccessful"
-        android:visibility="gone"
-        android:text="WE HAVE FOUND A USER BASED ON YOUR HOBBIES!" />
+        android:layout_weight="90"
+        android:id="@+id/scrollview"
+        android:visibility="gone">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
-        android:layout_weight="12"
-        android:gravity="center"
-        android:layout_below="@id/txtSuccessful"
-        android:fontFamily="@font/titillium"
-        android:textStyle="bold"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:visibility="gone"
-        android:textColor="#000000"
-        android:id="@+id/txtName"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/matchupdetails"
+            android:visibility="gone">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="14"
-        android:paddingLeft="20dp"
-        android:gravity="center"
-        android:paddingRight="20dp"
-        android:textColor="#203b58"
-        android:fontFamily="@font/titillium"
-        android:autoSizeTextType="uniform"
-        android:layout_below="@+id/txtName"
-        android:visibility="gone"
-        android:id="@+id/txtSameHobbies"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:autoSizeTextType="uniform"
+                android:padding="10dp"
+                android:fontFamily="@font/titillium"
+                android:textColor="#203b58"
+                android:textAlignment="center"
+                android:id="@+id/txtSuccessful"
+                android:text="WE HAVE FOUND A USER BASED ON YOUR HOBBIES!" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="14"
-        android:paddingLeft="20dp"
-        android:gravity="center"
-        android:paddingRight="20dp"
-        android:textColor="#203b58"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="@font/titillium"
-        android:visibility="gone"
-        android:layout_below="@id/txtSameHobbies"
-        android:id="@+id/txtMatchedUpUserHobby"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:layout_below="@id/txtSuccessful"
+                android:fontFamily="@font/titillium"
+                android:textStyle="bold"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Name"
+                android:textColor="#000000"
+                android:id="@+id/txtName"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/txtAge"
+                android:layout_below="@id/txtName"
+                android:fontFamily="@font/titillium"
+                android:gravity="center"
+                android:autoSizeTextType="uniform"
+                android:textColor="#000000"
+                android:text="Age: "/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/txtGender"
+                android:layout_below="@id/txtAge"
+                android:fontFamily="@font/titillium"
+                android:gravity="center"
+                android:autoSizeTextType="uniform"
+                android:textColor="#000000"
+                android:text="Gender: "/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/txtRating"
+                android:fontFamily="@font/titillium"
+                android:gravity="center"
+                android:layout_below="@id/txtGender"
+                android:autoSizeTextType="uniform"
+                android:textColor="#000000"
+                android:text="Rating: "/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:gravity="center"
+                android:paddingRight="20dp"
+                android:textColor="#203b58"
+                android:fontFamily="@font/titillium"
+                android:textSize="23sp"
+                android:layout_below="@+id/txtRating"
+                android:text="SAME HOBBIES"
+                android:id="@+id/txtSameHobbies"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="23sp"
+                android:paddingLeft="20dp"
+                android:gravity="center"
+                android:paddingRight="20dp"
+                android:textColor="#203b58"
+                android:fontFamily="@font/titillium"
+                android:text="MATCHED UP USER HOBBIES"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bottomborder"
+                android:layout_below="@id/txtSameHobbies"
+                android:id="@+id/txtMatchedUpUserHobby"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You might want to view some feedbacks on this user before accepting."
+                android:textSize="23sp"
+                android:fontFamily="@font/titillium"
+                android:gravity="center"
+                android:textColor="#203b58"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:id="@+id/viewfeedback"
+                android:layout_below="@id/txtMatchedUpUserHobby"
+                android:paddingTop="10dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="VIEW FEEDBACKS"
+                android:autoSizeTextType="uniform"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="5dp"
+                android:gravity="center"
+                android:fontFamily="@font/titillium"
+                android:textColor="#000000"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/viewfeedback"
+                android:id="@+id/btnMatchUpViewFeedbacks"
+                android:background="@drawable/buttonstyle"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/btnMatchUpViewFeedbacks"
+                android:autoSizeTextType="uniform"
+                android:textColor="#203b58"
+                android:paddingLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingRight="20dp"
+                android:fontFamily="@font/titillium"
+                android:gravity="center"
+                android:text="MATCH UP TO THIS USER?"
+                android:id="@+id/txtQn"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="YES"
+                android:id="@+id/btnYes"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/titillium"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:padding="5dp"
+                android:textColor="#000000"
+                android:background="@drawable/buttonstyle"
+                android:layout_below="@+id/txtQn"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="5dp"
+                android:text="NO"
+                android:textColor="#000000"
+                android:autoSizeTextType="uniform"
+                android:id="@+id/btnNo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/buttonstyle"
+                android:fontFamily="@font/titillium"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/btnYes"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="50"
-        android:visibility="gone"
         android:id="@+id/failure"
         android:gravity="center"
+        android:visibility="gone"
         android:padding="20dp"
         android:weightSum="100"
         android:orientation="vertical">
@@ -116,54 +238,9 @@
             android:autoSizeTextType="uniform"
             android:text="SURE"
             android:id="@+id/btnSure"
-            android:background="#ffffff"
+            android:background="@drawable/buttonstyle"
             android:fontFamily="@font/titillium"/>
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="15"
-        android:layout_below="@id/txtMatchedUpUserHobby"
-        android:autoSizeTextType="uniform"
-        android:textColor="#203b58"
-        android:padding="20dp"
-        android:fontFamily="@font/titillium"
-        android:gravity="center"
-        android:visibility="gone"
-        android:text="MATCH UP TO THIS USER?"
-        android:id="@+id/txtQn"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:text="YES"
-        android:id="@+id/btnYes"
-        android:autoSizeTextType="uniform"
-        android:fontFamily="@font/titillium"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:padding="5dp"
-        android:background="#ffffff"
-        android:visibility="gone"
-        android:layout_below="@+id/txtQn"/>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:padding="5dp"
-        android:text="NO"
-        android:autoSizeTextType="uniform"
-        android:id="@+id/btnNo"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="#ffffff"
-        android:fontFamily="@font/titillium"
-        android:visibility="gone"
-        android:layout_below="@+id/btnYes"/>
 
 </LinearLayout>

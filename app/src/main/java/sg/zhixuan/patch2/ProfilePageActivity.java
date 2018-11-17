@@ -25,7 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class ProfilePageActivity extends AppCompatActivity {
-    TextView tvName, tvAge, tvHobbies;
+    TextView tvName, tvAge, tvHobbies, tvGender;
     ImageView ivProfile;
     Button btnEdit;
     LinearLayout btnHome;
@@ -43,6 +43,7 @@ public class ProfilePageActivity extends AppCompatActivity {
         ivProfile = (ImageView) findViewById(R.id.ivProfile);
         btnEdit = (Button) findViewById(R.id.btnEdit);
         btnHome = (LinearLayout) findViewById(R.id.btnHome);
+        tvGender = (TextView)findViewById(R.id.tvGender);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference imgRef = storage.getReferenceFromUrl(MainAccountActivity.user.getProfilePic());
@@ -70,6 +71,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
         tvName.setText(MainAccountActivity.user.getName());
         tvAge.append(Integer.toString(MainAccountActivity.user.getAge()));
+        tvGender.append(MainAccountActivity.user.getGender());
 
         String hobbyList[] = MainAccountActivity.user.getHobby().split(",");
         for (int i = 0; i < hobbyList.length; i ++) {
@@ -99,6 +101,9 @@ public class ProfilePageActivity extends AppCompatActivity {
 
         Glide.with(ProfilePageActivity.this)
                 .load(MainAccountActivity.user.profilePic)
+                .apply(new RequestOptions()
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.NONE))
                 .into(ivProfile);
     }
 }

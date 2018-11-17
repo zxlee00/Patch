@@ -1,5 +1,6 @@
 package sg.zhixuan.patch2;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.DialogInterface;
@@ -36,18 +37,21 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout btnAppt, btnMatchup, btnChats, btnProfile;
     FirebaseDatabase database;
-    FirebaseAuth mAuth;
+    static FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     DatabaseReference mDatabase;
     TextView txtMatchup, txtAppt, txtChat, txtProfile;
     ImageView imgProfile, imgMatchup, imgChat, imgAppt;
-    Button btnSignOut;
+    Button btnMore;
     static String uid;
+    static Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        activity = this;
 
         NotificationManager notificationmanager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -63,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         imgChat = (ImageView)findViewById(R.id.imgChat);
         imgMatchup = (ImageView)findViewById(R.id.imgMatchup);
         imgProfile = (ImageView)findViewById(R.id.imgProfile);
-        btnSignOut = (Button)findViewById(R.id.btnSignOut);
+        btnMore = (Button)findViewById(R.id.btnMore);
 
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference();
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         uid = mAuth.getUid();
 
         FirebaseDatabase.getInstance().getReference().child("matchup").child("lookingForMatchup").child(uid).setValue("");
+        FirebaseDatabase.getInstance().getReference().child("ratingfeedback").child(uid).child("rating").setValue("5.00");
 
         btnAppt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,29 +134,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnSignOut.setOnClickListener(new View.OnClickListener() {
+        btnMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
-                alertDialog.setTitle("Sign Out")
-                        .setMessage("Are you sure you want to sign out?")
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        })
-                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                mAuth.signOut();
-
-                                Intent intent = new Intent(MainActivity.this, MainAccountActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            }
-                        })
-                        .show();
+                startActivity(new Intent(MainActivity.this, MoreOptionsActivity.class));
             }
         });
     }
@@ -182,5 +168,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+    }
+
+    public static void finishMainActivity() {
+        activity.finish();
     }
 }

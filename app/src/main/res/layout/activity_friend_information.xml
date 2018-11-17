@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#f0dfbb"
+    tools:context=".FriendInformationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:background="@drawable/bottomborder"
+            android:text="&lt;"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/titillium"
+            android:gravity="center"
+            android:id="@+id/btnFriendInfoToFriend"
+            android:textColor="#203f58"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:text="FRIENDS"
+            android:textColor="#782e2c"
+            android:padding="10dp"
+            android:background="@drawable/bottomborder"
+            android:fontFamily="@font/titillium"
+            android:autoSizeTextType="uniform"
+            android:id="@+id/friends"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:background="@drawable/bottomborder"></View>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="18"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:padding="5dp"
+        android:id="@+id/friendimg"
+        android:src="@drawable/friends"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:text="Name: "
+        android:textColor="#203f58"
+        android:fontFamily="@font/titillium"
+        android:gravity="center"
+        android:id="@+id/friendname"
+        android:autoSizeTextType="uniform"
+        android:padding="3dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:text="Gender: "
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/titillium"
+        android:gravity="center"
+        android:id="@+id/friendgender"
+        android:textColor="#203f58"
+        android:padding="3dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:textColor="#203f58"
+        android:text="Age: "
+        android:gravity="center"
+        android:id="@+id/friendage"
+        android:fontFamily="@font/titillium"
+        android:autoSizeTextType="uniform"
+        android:padding="3dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:text="Rating: "
+        android:id="@+id/friendrating"
+        android:fontFamily="@font/titillium"
+        android:gravity="center"
+        android:autoSizeTextType="uniform"
+        android:padding="3dp"
+        android:textColor="#203f58"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:padding="5dp"
+        android:text="Hobby: "
+        android:textColor="#203f58"
+        android:gravity="center"
+        android:id="@+id/friendhobby"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/titillium"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="17"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:background="@drawable/buttonstyle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:text="FEEDBACK"
+                android:autoSizeTextType="uniform"
+                android:padding="5dp"
+                android:id="@+id/btnFeedback"
+                android:fontFamily="@font/titillium"
+                android:textColor="#203f58"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:background="@drawable/buttonstyle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:text="BLOCK"
+                android:id="@+id/btnBlock"
+                android:autoSizeTextType="uniform"
+                android:padding="3dp"
+                android:fontFamily="@font/titillium"
+                android:textColor="#203f58"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:background="@drawable/buttonstyle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:text="DELETE FRIEND"
+                android:id="@+id/btnDeleteFriend"
+                android:autoSizeTextType="uniform"
+                android:padding="5dp"
+                android:fontFamily="@font/titillium"
+                android:textColor="#203f58"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:background="@drawable/buttonstyle"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:text="VIEW FEEDBACKS"
+                android:id="@+id/btnViewFeedbacks"
+                android:autoSizeTextType="uniform"
+                android:padding="5dp"
+                android:fontFamily="@font/titillium"
+                android:textColor="#203f58"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

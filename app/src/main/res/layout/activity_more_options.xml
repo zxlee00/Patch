@@ -7,13 +7,13 @@
     android:background="#f0dfbb"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".MainActivity">
+    tools:context=".MoreOptionsActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:text="HOME"
+        android:text="MORE"
         android:textColor="#782e2c"
         android:padding="10dp"
         android:fontFamily="@font/titillium"
@@ -39,7 +39,7 @@
             android:layout_weight="50"
             android:orientation="vertical"
             android:weightSum="100"
-            android:id="@+id/btnMatchup"
+            android:id="@+id/btnFriends"
             android:background="@drawable/rightborder"
             android:gravity="center_vertical"
             android:clickable="true">
@@ -48,8 +48,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="50"
-                android:id="@+id/imgMatchup"
-                android:src="@drawable/matchup"/>
+                android:id="@+id/imgFriends"
+                android:src="@drawable/friends"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -58,8 +58,8 @@
                 android:paddingRight="20dp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                android:id="@+id/txtMatchup"
-                android:text="MATCH-UP"
+                android:id="@+id/txtFriends"
+                android:text="FRIENDS"
                 android:gravity="center"
                 android:fontFamily="@font/titillium"
                 android:textColor="#203f58"/>
@@ -72,7 +72,7 @@
             android:layout_weight="50"
             android:orientation="vertical"
             android:gravity="center_vertical"
-            android:id="@+id/btnChats"
+            android:id="@+id/btnLanguage"
             android:weightSum="100"
             android:clickable="true">
 
@@ -80,8 +80,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="50"
-                android:id="@+id/imgChat"
-                android:src="@drawable/chat"/>
+                android:id="@+id/imgLanguage"
+                android:src="@drawable/language"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -90,8 +90,8 @@
                 android:paddingRight="20dp"
                 android:autoSizeTextType="uniform"
                 android:maxLines="1"
-                android:text="CHATS"
-                android:id="@+id/txtChat"
+                android:text="LANGUAGE"
+                android:id="@+id/txtLanguage"
                 android:gravity="center"
                 android:fontFamily="@font/titillium"
                 android:textColor="#203f58"/>
@@ -119,7 +119,7 @@
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:weightSum="100"
-            android:id="@+id/btnAppt"
+            android:id="@+id/btnHelp"
             android:background="@drawable/rightborder"
             android:clickable="true">
 
@@ -127,8 +127,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="50"
-                android:id="@+id/imgAppt"
-                android:src="@drawable/appt"/>
+                android:id="@+id/imgHelp"
+                android:src="@drawable/help"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -137,8 +137,8 @@
                 android:paddingRight="20dp"
                 android:maxLines="1"
                 android:autoSizeTextType="uniform"
-                android:text="APPOINTMENTS"
-                android:id="@+id/txtAppt"
+                android:text="HELP"
+                android:id="@+id/txtHelp"
                 android:gravity="center"
                 android:fontFamily="@font/titillium"
                 android:textColor="#203f58"/>
@@ -152,15 +152,15 @@
             android:orientation="vertical"
             android:gravity="center_vertical"
             android:weightSum="100"
-            android:id="@+id/btnProfile"
+            android:id="@+id/btnSignOut"
             android:clickable="true">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="50"
-                android:id="@+id/imgProfile"
-                android:src="@drawable/profile"/>
+                android:id="@+id/imgSignOut"
+                android:src="@drawable/signout"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -168,9 +168,9 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:autoSizeTextType="uniform"
-                android:text="PROFILE"
+                android:text="SIGN OUT"
                 android:maxLines="1"
-                android:id="@+id/txtProfile"
+                android:id="@+id/txtSignOut"
                 android:gravity="center"
                 android:fontFamily="@font/titillium"
                 android:textColor="#203f58"/>
@@ -183,11 +183,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:text="MORE"
+        android:text="BACK"
         android:padding="10dp"
         android:fontFamily="@font/titillium"
         android:autoSizeTextType="uniform"
         android:background="@drawable/topborder"
-        android:id="@+id/btnMore"/>
+        android:id="@+id/btnBack"/>
 
 </LinearLayout>

@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#dfb992"
+    android:weightSum="100"
     android:padding="40dp">
 
     <TextView
@@ -19,29 +20,33 @@
         android:textSize="36sp"
         android:fontFamily="@font/titillium"
         android:textColor="#9e6759"
-        android:layout_weight=".5"
+        android:layout_weight="20"
         android:gravity="center"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="20"
+        android:weightSum="100"
         android:orientation="vertical"
         android:gravity="center">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:gravity="center"
             android:textAllCaps="true"
             android:text="Name:"
-            android:textSize="24sp"
+            android:autoSizeTextType="uniform"
             android:fontFamily="@font/titillium"
             android:textColor="#203f58"/>
 
         <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="50"
             android:background="@drawable/edit_text_box1"
             android:inputType="textPersonName"
             android:padding="15dp"/>
@@ -51,23 +56,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="20"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:weightSum="100">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:gravity="center"
             android:textAllCaps="true"
             android:text="Age:"
-            android:textSize="24sp"
+            android:autoSizeTextType="uniform"
             android:fontFamily="@font/titillium"
             android:textColor="#203f58"/>
 
         <Spinner
             android:id="@+id/spnAge"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="50"
             android:background="@drawable/edit_text_box1"
             android:padding="15dp"
             android:textAlignment="center">
@@ -76,11 +85,41 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:weightSum="100"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="30"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:text="gender:"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/titillium"
+            android:textColor="#203f58"/>
+
+        <Spinner
+            android:id="@+id/spnGender"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:background="@drawable/edit_text_box1"
+            android:padding="15dp"
+            android:textAlignment="center"/>
+
+    </LinearLayout>
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:layout_weight="1"
+        android:layout_weight="20"
         android:columnCount="2">
 
         <Button

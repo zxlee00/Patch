@@ -13,6 +13,7 @@ public class User {
     public String phoneNumber;
     public String profilePic;
     public String hobby;
+    public String gender;
 
     public User() {
     }
@@ -23,13 +24,14 @@ public class User {
         this.uid = uid;
     }
 
-    public User(String uid, String name, int age, String phoneNumber, String profilePic, String hobby) {
+    public User(String uid, String name, int age, String phoneNumber, String profilePic, String hobby, String gender) {
         this.uid = uid;
         this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.profilePic = profilePic;
         this.hobby = hobby;
+        this.gender = gender;
     }
 
     public String getUid() {
@@ -78,5 +80,13 @@ public class User {
 
     public void setHobby(String hobby) {
         this.hobby = hobby;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f0dfbb"
+    android:weightSum="100"
+    tools:context=".NewFeedbackActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:weightSum="100"
+        android:background="@drawable/bottomborder"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:textColor="#203f58"
+            android:fontFamily="@font/titillium"
+            android:gravity="center"
+            android:background="@drawable/bottomborder"
+            android:text="&lt;"
+            android:autoSizeTextType="uniform"
+            android:id="@+id/btnNewFeedbackToFriendsActivity"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="75"
+            android:text="FEEDBACK"
+            android:textColor="#782e2c"
+            android:padding="10dp"
+            android:fontFamily="@font/titillium"
+            android:autoSizeTextType="uniform"
+            android:id="@+id/feedback"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:id="@+id/reportedUserInfo"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="75"
+                android:textColor="#203f58"
+                android:text="NAME OF USER"
+                android:gravity="center"
+                android:id="@+id/txtReportUserName"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/titillium"
+                android:padding="5dp"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:src="@drawable/help"
+                android:padding="10dp"
+                android:id="@+id/imgReportedUser"/>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/reportedUserInfo">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:weightSum="100"
+                    android:orientation="horizontal"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="35"
+                        android:text="RATING"
+                        android:fontFamily="@font/titillium"
+                        android:autoSizeTextType="uniform"
+                        android:textColor="#203f58"
+                        android:gravity="center"/>
+
+                    <SeekBar
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:max="5"
+                        android:id="@+id/ratingSeekBar"
+                        android:progress="5" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:id="@+id/txtSeekbarValue"
+                        android:text="5"
+                        android:textColor="#203f58"
+                        android:autoSizeTextType="uniform"
+                        android:gravity="center"
+                        android:fontFamily="@font/titillium"
+                        android:padding="3dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:text="What do you want to feedback on this user?"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/titillium"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:gravity="center"
+                    android:textColor="#203f58"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittextbox"
+                    android:padding="15dp"
+                    android:id="@+id/txtFeedback"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:inputType="textMultiLine"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/buttonstyle"
+                    android:text="SUBMIT"
+                    android:id="@+id/btnSubmitReport"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/titillium"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="#203f58"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</LinearLayout>

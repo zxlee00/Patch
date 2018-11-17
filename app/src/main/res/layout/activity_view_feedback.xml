@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#f0dfbb"
+    android:layout_height="match_parent"
+    tools:context=".ViewFeedbackActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:weightSum="100"
+        android:background="@drawable/bottomborder"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:textColor="#203f58"
+            android:fontFamily="@font/titillium"
+            android:gravity="center"
+            android:background="@drawable/bottomborder"
+            android:text="&lt;"
+            android:autoSizeTextType="uniform"
+            android:id="@+id/btnViewFeedbacksToFriendInfoActivity"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="75"
+            android:text="VIEW FEEDBACK"
+            android:textColor="#782e2c"
+            android:padding="10dp"
+            android:fontFamily="@font/titillium"
+            android:autoSizeTextType="uniform"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90"
+        android:id="@+id/rvFeedbacks"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

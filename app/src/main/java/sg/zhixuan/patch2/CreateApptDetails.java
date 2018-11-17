@@ -35,7 +35,7 @@ import java.util.Locale;
 
 public class CreateApptDetails extends AppCompatActivity {
 
-    Button newApptDatePicker, newApptTimePicker, btnCompleteAppt;
+    Button newApptDatePicker, newApptTimePicker, btnCompleteAppt, btnApptDetailsToApptActivity;
     int year, month, day;
     int hourOfDay, minute;
     TextView dateTextView, timeTextView, txtNewApptName, txtNewApptLocation, txtNewApptParty;
@@ -69,6 +69,7 @@ public class CreateApptDetails extends AppCompatActivity {
 
         txtNewApptParty = (TextView)findViewById(R.id.txtNewApptParty);
         txtNewApptLocation = (TextView)findViewById(R.id.txtNewApptLocation);
+        btnApptDetailsToApptActivity = (Button)findViewById(R.id.btnApptDetailsToApptActivity);
         dateTextView = (TextView)findViewById(R.id.dateTextView);
         timeTextView = (TextView)findViewById(R.id.timeTextView);
         txtNewApptName = (TextView)findViewById(R.id.txtNewApptName);
@@ -183,6 +184,13 @@ public class CreateApptDetails extends AppCompatActivity {
 
                     CreateApptDetails.this.finish();
                 }
+            }
+        });
+
+        btnApptDetailsToApptActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

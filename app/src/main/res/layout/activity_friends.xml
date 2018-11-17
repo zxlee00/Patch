@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:orientation="vertical"
+    android:background="#f0dfbb"
+    tools:context=".FriendsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:text="FRIENDS"
+        android:textColor="#782e2c"
+        android:padding="10dp"
+        android:background="@drawable/bottomborder"
+        android:fontFamily="@font/titillium"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/matchup"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btnHome"
+            android:id="@+id/rvFriends"></android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#dfb992"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:weightSum="100"
+            android:id="@+id/btnFriendsToHome"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@id/btnAddAppt">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="55"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/home"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="45"
+                android:text="HOME"
+                android:textColor="#000000"
+                android:autoSizeTextType="uniform"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:fontFamily="@font/titillium"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
