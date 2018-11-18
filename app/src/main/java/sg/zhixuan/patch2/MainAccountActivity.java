@@ -3,6 +3,7 @@ package sg.zhixuan.patch2;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,11 +28,20 @@ public class MainAccountActivity extends AppCompatActivity {
     String mUserKey;
     DatabaseReference mUserReference;
     AlertDialog.Builder alertDialog;
+    boolean isFirstTimeUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_account);
+
+        checkFirstTimeUse();
+        if (isFirstTimeUser == true) {
+            Intent intent = new Intent(this, PatchOnBoardingActivity.class);
+            startActivity(intent);
+
+            setNotFirstTimeUser();
+        }
 
         Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -98,5 +108,19 @@ public class MainAccountActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //check if user is a first time user
+    public void checkFirstTimeUse() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        isFirstTimeUser = sharedPreferences.getBoolean("IsFirstTimeUser", true);
+    }
+
+    //call this method after the first time the user opens the app
+    public void setNotFirstTimeUser() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("IsFirstTimeUser", false);
+        editor.commit();
     }
 }

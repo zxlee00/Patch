@@ -74,28 +74,43 @@
         <activity
             android:name=".MatchUpActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MatchUpOptions"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MatchupConversationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MatchupUserConversationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".RequestActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ProfilePageActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ProfileEditActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MoreOptionsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".FriendsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".FriendInformationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".NewFeedbackActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ViewFeedbackActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MatchUpOptions"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MatchupConversationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MatchupUserConversationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RequestActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfilePageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfileEditActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MoreOptionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FriendsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FriendInformationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NewFeedbackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ViewFeedbackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PatchOnBoardingActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>

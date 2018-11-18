@@ -80,6 +80,13 @@ public class MoreOptionsActivity extends AppCompatActivity {
             }
         });
 
+        btnHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MoreOptionsActivity.this, HelpActivity.class));
+            }
+        });
+
         btnFriends.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

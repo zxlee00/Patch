@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_1"
+                android:layout_marginTop="20dp"
+                android:id="@+id/imghelpappt1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt1"
+                android:id="@+id/txthelpappt1"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_2"
+                android:layout_below="@id/txthelpappt1"
+                android:id="@+id/imghelpappt2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt2"
+                android:id="@+id/txthelpappt2"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_3"
+                android:layout_below="@id/txthelpappt2"
+                android:id="@+id/imghelpappt3"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt3"
+                android:id="@+id/txthelpappt3"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_4"
+                android:layout_below="@id/txthelpappt3"
+                android:id="@+id/imghelpappt4"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt4"
+                android:id="@+id/txthelpappt4"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_5"
+                android:layout_below="@id/txthelpappt4"
+                android:id="@+id/imghelpappt5"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt5"
+                android:id="@+id/txthelpappt5"
+                android:fontFamily="@font/arimo"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_6"
+                android:layout_below="@id/txthelpappt5"
+                android:id="@+id/imghelpappt6"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt6"
+                android:id="@+id/txthelpappt6"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_7"
+                android:layout_below="@id/txthelpappt6"
+                android:id="@+id/imghelpappt7"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt7"
+                android:id="@+id/txthelpappt7"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_8"
+                android:layout_below="@id/txthelpappt7"
+                android:id="@+id/imghelpappt8"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt8"
+                android:id="@+id/txthelpappt8"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_9"
+                android:layout_below="@id/txthelpappt8"
+                android:id="@+id/imghelpappt9"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt9"
+                android:id="@+id/txthelpappt9"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_appt_10"
+                android:layout_below="@id/txthelpappt9"
+                android:id="@+id/imghelpappt10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpappt10"
+                android:id="@+id/txthelpappt10"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="APPOINTMENTS TAB"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

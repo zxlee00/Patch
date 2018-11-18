@@ -1,0 +1,74 @@
+<RelativeLayout
+    android:id="@+id/main_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HelpActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="#FFFFFF"
+        android:theme="@style/ToolbarTheme"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="85"
+                android:text="Help Guide"
+                android:textColor="#FFFFFF"
+                android:gravity="center_vertical"
+                android:autoSizeTextType="uniform"
+                android:padding="7dp"
+                android:textStyle="bold"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:padding="10dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_marginRight="5dp"
+                android:id="@+id/btnOpenOnboarding"
+                android:clickable="true"
+                android:src="@drawable/onboarding"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/tab"
+        android:elevation="6dp"
+        app:tabMode="scrollable"
+        app:tabGravity="center"
+        app:tabTextAppearance="@style/CustomTextStyle"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tab_layout"/>
+
+</RelativeLayout>

@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="solid_one">#dfb1b6</color>
+    <color name="solid_two">#fedbb7</color>
+    <color name="solid_three">#97d5b3</color>
+    <color name="solid_four">#acb9e8</color>
+    <color name="solid_five">#a2a1ac</color>
+    <color name="solid_six">#c58f9d</color>
+    <color name="solid_seven">#a29ecd</color>
+
+    <color name="help_tab_color">#2f6572</color>
+    <color name="tab">#357180</color>
+
 </resources>
