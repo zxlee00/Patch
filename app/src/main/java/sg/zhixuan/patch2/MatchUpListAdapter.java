@@ -63,28 +63,43 @@ public class MatchUpListAdapter extends RecyclerView.Adapter<MatchUpListAdapter.
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                CharSequence options[] = new CharSequence[]{"Delete", "User Details"};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Delete")
-                        .setMessage("Would you like to delete this match up?\nNote that you will not be able to contact this user anymore if you accept.")
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        })
-                        .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                matchupRef.child(MainActivity.uid).child(matchedUpUserList.get(position).uid).removeValue();
-                                matchupRef.child(matchedUpUserList.get(position).uid).child(MainActivity.uid).removeValue();
-                                requestRef.child(matchedUpUserList.get(position).uid).child(MainActivity.uid).removeValue();
-                                requestRef.child(MainActivity.uid).child(matchedUpUserList.get(position).uid).removeValue();
-                                notifyDataSetChanged();
 
+                builder.setTitle("Options")
+                    .setItems(options, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (which == 0) {
+                                AlertDialog.Builder deleteDialog = new AlertDialog.Builder(context);
+                                deleteDialog.setTitle("Delete")
+                                        .setMessage("Would you like to delete this match up?\nNote that you will not be able to contact this user anymore if you accept.")
+                                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.cancel();
+                                            }
+                                        })
+                                        .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                matchupRef.child(MainActivity.uid).child(matchedUpUserList.get(position).uid).removeValue();
+                                                matchupRef.child(matchedUpUserList.get(position).uid).child(MainActivity.uid).removeValue();
+                                                requestRef.child(matchedUpUserList.get(position).uid).child(MainActivity.uid).removeValue();
+                                                requestRef.child(MainActivity.uid).child(matchedUpUserList.get(position).uid).removeValue();
+                                                matchedUpUserList.remove(position);
+                                                notifyDataSetChanged();
+                                            }
+                                        })
+                                        .show();
                             }
-                        })
-                        .show();
+                            else if (which == 1) {
+                                MatchUpUserInformation.selectedUID = matchUpUser.uid;
+                                context.startActivity(new Intent(context, MatchUpUserInformation.class));
+                            }
+                        }
+                    }).show();
 
                 return true;
             }

@@ -5,17 +5,158 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/img"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/img"
-        android:id="@+id/textview"
-        android:text="PROFILE TAB"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imghelpprofile1"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/help_profile_1" />
+
+            <TextView
+                android:id="@+id/txthelpprofile1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpprofile1"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="PROFILE TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpprofile2"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpprofile1"
+                android:src="@drawable/help_profile_2" />
+
+            <TextView
+                android:id="@+id/txthelpprofile2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpprofile2"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="PROFILE TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpprofile3"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpprofile2"
+                android:src="@drawable/help_profile_3" />
+
+            <TextView
+                android:id="@+id/txthelpprofile3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpprofile3"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="PROFILE TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpprofile4"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpprofile3"
+                android:src="@drawable/help_profile_4" />
+
+            <TextView
+                android:id="@+id/txthelpprofile4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpprofile4"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="PROFILE TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpprofile5"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpprofile4"
+                android:src="@drawable/help_profile_5" />
+
+            <TextView
+                android:id="@+id/txthelpprofile5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpprofile5"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="PROFILE TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpprofile6"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpprofile5"
+                android:src="@drawable/help_profile_6" />
+
+            <TextView
+                android:id="@+id/txthelpprofile6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpprofile6"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="PROFILE TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpprofile7"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpprofile6"
+                android:src="@drawable/help_profile_7" />
+
+            <TextView
+                android:id="@+id/txthelpprofile7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpprofile7"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="PROFILE TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

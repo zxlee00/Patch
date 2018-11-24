@@ -5,17 +5,196 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/img"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/img"
-        android:id="@+id/textview"
-        android:text="REQUEST TAB"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_1"
+                android:layout_marginTop="20dp"
+                android:id="@+id/imghelprequests1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests1"
+                android:id="@+id/txthelprequests1"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:text="REQUESTS TAB"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_2"
+                android:layout_below="@id/txthelprequests1"
+                android:id="@+id/imghelprequests2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests2"
+                android:id="@+id/txthelprequests2"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="REQUESTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_3"
+                android:layout_below="@id/txthelprequests2"
+                android:id="@+id/imghelprequests3"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests3"
+                android:id="@+id/txthelprequests3"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="REQUESTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_4"
+                android:layout_below="@id/txthelprequests3"
+                android:id="@+id/imghelprequests4"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests4"
+                android:id="@+id/txthelprequests4"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="REQUESTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_5"
+                android:layout_below="@id/txthelprequests4"
+                android:id="@+id/imghelprequests5"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests5"
+                android:id="@+id/txthelprequests5"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="REQUESTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_6"
+                android:layout_below="@id/txthelprequests5"
+                android:id="@+id/imghelprequests6"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests6"
+                android:id="@+id/txthelprequests6"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="REQUESTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_7"
+                android:layout_below="@id/txthelprequests6"
+                android:id="@+id/imghelprequests7"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests7"
+                android:id="@+id/txthelprequests7"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="REQUESTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_8"
+                android:layout_below="@id/txthelprequests7"
+                android:id="@+id/imghelprequests8"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests8"
+                android:id="@+id/txthelprequests8"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="REQUESTS TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_requests_9"
+                android:layout_below="@id/txthelprequests8"
+                android:id="@+id/imghelprequests9"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelprequests9"
+                android:id="@+id/txthelprequests9"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="REQUESTS TAB"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

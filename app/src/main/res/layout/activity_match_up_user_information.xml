@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="100"
+    android:orientation="vertical"
+    android:background="#f0dfbb"
+    tools:context=".MatchUpUserInformation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:weightSum="100"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:background="@drawable/bottomborder"
+            android:text="&lt;"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/titillium"
+            android:gravity="center"
+            android:id="@+id/btnMatchupUserInfoToMatchUpConversation"
+            android:textColor="#203f58"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="75"
+            android:text="MATCH UP USER INFORMATION"
+            android:textColor="#782e2c"
+            android:padding="10dp"
+            android:background="@drawable/bottomborder"
+            android:fontFamily="@font/titillium"
+            android:autoSizeTextType="uniform"
+            android:id="@+id/friends"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="15"
+            android:background="@drawable/bottomborder"></View>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NAME"
+                android:textSize="45sp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/titillium"
+                android:id="@+id/txtMatchedUpUserInfoName"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AGE"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/titillium"
+                android:layout_below="@id/txtMatchedUpUserInfoName"
+                android:id="@+id/txtMatchedUpUserInfoAge"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="GENDER"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/titillium"
+                android:layout_below="@id/txtMatchedUpUserInfoAge"
+                android:id="@+id/txtMatchedUpUserInfoGender"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RATING"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:fontFamily="@font/titillium"
+                android:layout_below="@id/txtMatchedUpUserInfoGender"
+                android:id="@+id/txtMatchedUpUserInfoRating"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HOBBY"
+                android:gravity="center"
+                android:textColor="#203f58"
+                android:fontFamily="@font/titillium"
+                android:textSize="25sp"
+                android:layout_below="@id/txtMatchedUpUserInfoRating"
+                android:id="@+id/txtMatchedUpUserInfoHobby"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:weightSum="100"
+                android:orientation="horizontal"
+                android:layout_below="@id/txtMatchedUpUserInfoHobby"
+                android:layout_marginBottom="10dp">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/buttonstyle"
+                    android:fontFamily="@font/titillium"
+                    android:autoSizeTextType="uniform"
+                    android:padding="5dp"
+                    android:id="@+id/btnMatchUpUserViewFeedback"
+                    android:text="VIEW FEEDBACKS"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="50"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/titillium"
+                    android:autoSizeTextType="uniform"
+                    android:padding="5dp"
+                    android:background="@drawable/buttonstyle"
+                    android:id="@+id/btnMatchUpUserFeedback"
+                    android:text="FEEDBACK"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

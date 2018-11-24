@@ -59,7 +59,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="75"
+                android:layout_weight="100"
                 android:textColor="#203f58"
                 android:text="NAME OF USER"
                 android:gravity="center"
@@ -67,14 +67,6 @@
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/titillium"
                 android:padding="5dp"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="25"
-                android:src="@drawable/help"
-                android:padding="10dp"
-                android:id="@+id/imgReportedUser"/>
 
         </LinearLayout>
 

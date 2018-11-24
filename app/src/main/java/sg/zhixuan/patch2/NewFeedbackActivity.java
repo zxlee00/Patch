@@ -27,7 +27,6 @@ public class NewFeedbackActivity extends AppCompatActivity {
 
     SeekBar ratingSeekBar;
     TextView txtReportUserName, txtSeekbarValue, txtFeedback;
-    ImageView imgReportedUser;
     static User feedbackUser;
     Button btnSubmitReport, btnNewFeedbackToFriendsActivity;
     DatabaseReference ratingRef;
@@ -42,19 +41,12 @@ public class NewFeedbackActivity extends AppCompatActivity {
         ratingSeekBar = (SeekBar)findViewById(R.id.ratingSeekBar);
         txtReportUserName = (TextView)findViewById(R.id.txtReportUserName);
         txtSeekbarValue = (TextView)findViewById(R.id.txtSeekbarValue);
-        imgReportedUser = (ImageView)findViewById(R.id.imgReportedUser);
         txtFeedback = (TextView)findViewById(R.id.txtFeedback);
         btnSubmitReport = (Button)findViewById(R.id.btnSubmitReport);
         ratingRef = FirebaseDatabase.getInstance().getReference().child("ratingfeedback");
         btnNewFeedbackToFriendsActivity = (Button)findViewById(R.id.btnNewFeedbackToFriendsActivity);
 
         txtReportUserName.setText(feedbackUser.name);
-        Glide.with(this)
-                .load(feedbackUser.profilePic)
-                .apply(new RequestOptions()
-                        .skipMemoryCache(true)
-                        .diskCacheStrategy(DiskCacheStrategy.NONE))
-                .into(imgReportedUser);
 
         ratingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

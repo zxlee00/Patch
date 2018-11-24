@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="100"
     android:orientation="vertical"
+    android:background="#f0dfbb"
     tools:context=".MatchupUserConversationActivity">
 
     <TextView
@@ -59,16 +60,20 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="75">
+        android:layout_weight="75"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="10dp">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/messagetext"
-            android:id="@+id/scrollView">
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/matchupmessagetext"
+            android:id="@+id/matchupscrollView">
 
             <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/layout2"
+                android:id="@+id/matchuplayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -77,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_marginBottom="10dp"
-                    android:id="@+id/layout1">
+                    android:id="@+id/matchuplayout1">
                 </LinearLayout>
 
             </RelativeLayout>
@@ -89,8 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:id="@+id/messagetext"
-            android:layout_margin="5dp"/>
+            android:id="@+id/matchupmessagetext"/>
 
     </RelativeLayout>
 

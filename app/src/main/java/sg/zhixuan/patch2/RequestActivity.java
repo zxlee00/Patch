@@ -33,7 +33,7 @@ public class RequestActivity extends AppCompatActivity {
         requestList = new ArrayList<Request>();
 
         requestRef = FirebaseDatabase.getInstance().getReference().child("requests").child(MainActivity.uid);
-        requestRef.addValueEventListener(new ValueEventListener() {
+        requestRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 requestList.clear();

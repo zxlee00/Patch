@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,6 +93,7 @@ public class HobbyActivity extends AppCompatActivity {
                 }
                 MainAccountActivity.user.setHobby(hobby);
                 VerificationActivity.mDatabase.child("users").child(MainAccountActivity.user.getUid()).setValue(MainAccountActivity.user);
+                FirebaseDatabase.getInstance().getReference().child("ratingfeedback").child(MainAccountActivity.user.getUid()).child("rating").setValue("5.00");
                 Log.d(TAG, "onClick: " + hobby);
                 Intent intent = new Intent(HobbyActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

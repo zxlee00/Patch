@@ -12,9 +12,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     DatabaseReference requestRef = FirebaseDatabase.getInstance().getReference().child("requests");
     DatabaseReference matchUpRef = FirebaseDatabase.getInstance().getReference().child("matchup");
     DatabaseReference contactRef = FirebaseDatabase.getInstance().getReference().child("contacts");
+    DatabaseReference moveMessagesMatchUpRef = FirebaseDatabase.getInstance().getReference().child("matchup").child("messages");
+    DatabaseReference moveMessagesChatsRef = FirebaseDatabase.getInstance().getReference().child("messages");
 
     public RequestAdapter(Context c, List<Request> l) {
         this.context = c;
@@ -45,7 +49,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RequestViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RequestViewHolder holder, final int position) {
         final Request request = requestList.get(position);
 
         holder.txtRequestUserName.setText(request.name);
@@ -67,6 +71,32 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                                 contactRef.child(MainActivity.uid).child(request.uid).child("type").setValue("User");
                                 contactRef.child(request.uid).child(MainActivity.uid).child("type").setValue("User");
                                 notifyDataSetChanged();
+
+                                moveMessagesMatchUpRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot messagesSnapshot : dataSnapshot.child(MainActivity.uid + "_" + request.uid).getChildren()) {
+                                            moveMessagesChatsRef.child(MainActivity.uid + "_" + request.uid).child(messagesSnapshot.getKey()).setValue(messagesSnapshot.getValue());
+                                        }
+
+                                        for (DataSnapshot messageSnapshot : dataSnapshot.child(request.uid + "_" + MainActivity.uid).getChildren()) {
+                                            moveMessagesChatsRef.child(request.uid + "_" + MainActivity.uid).child(messageSnapshot.getKey()).setValue(messageSnapshot.getValue());
+                                        }
+
+                                        moveMessagesMatchUpRef.child(MainActivity.uid + "_" + request.uid).removeValue();
+                                        moveMessagesMatchUpRef.child(request.uid + "_" + MainActivity.uid).removeValue();
+
+                                        requestList.remove(position);
+                                        notifyDataSetChanged();
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                    }
+                                });
+
+
                                 Toast.makeText(context, "All your previous texts with " + request.name + " will be moved over to the 'CHATS' page.", Toast.LENGTH_LONG).show();
                             }
                         })
@@ -90,6 +120,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 requestRef.child(MainActivity.uid).child(request.uid).removeValue();
+                                requestList.remove(position);
                                 notifyDataSetChanged();
                             }
                         })

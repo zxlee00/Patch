@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         activity = this;
-
         NotificationManager notificationmanager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         btnAppt = (LinearLayout)findViewById(R.id.btnAppt);
@@ -76,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         uid = mAuth.getUid();
 
         FirebaseDatabase.getInstance().getReference().child("matchup").child("lookingForMatchup").child(uid).setValue("");
-        FirebaseDatabase.getInstance().getReference().child("ratingfeedback").child(uid).child("rating").setValue("5.00");
 
         btnAppt.setOnClickListener(new View.OnClickListener() {
             @Override

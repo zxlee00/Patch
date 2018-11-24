@@ -5,17 +5,198 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/img"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/img"
-        android:id="@+id/textview"
-        android:text="FRIEND TAB"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imghelpfriends1"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/help_friends_1" />
+
+            <TextView
+                android:id="@+id/txthelpfriends1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends1"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpfriends2"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpfriends1"
+                android:src="@drawable/help_friends_2" />
+
+            <TextView
+                android:id="@+id/txthelpfriends2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends2"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpfriends3"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpfriends2"
+                android:src="@drawable/help_friends_3" />
+
+            <TextView
+                android:id="@+id/txthelpfriends3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends3"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpfriends4"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpfriends3"
+                android:src="@drawable/help_friends_4" />
+
+            <TextView
+                android:id="@+id/txthelpfriends4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends4"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpfriends5"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpfriends4"
+                android:src="@drawable/help_friends_5" />
+
+            <TextView
+                android:id="@+id/txthelpfriends5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends5"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpfriends6"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpfriends5"
+                android:src="@drawable/help_friends_6" />
+
+            <TextView
+                android:id="@+id/txthelpfriends6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends6"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpfriends7"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpfriends6"
+                android:src="@drawable/help_friends_7" />
+
+            <TextView
+                android:id="@+id/txthelpfriends7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends7"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpfriends8"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpfriends7"
+                android:src="@drawable/help_friends_8" />
+
+            <TextView
+                android:id="@+id/txthelpfriends8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends8"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imghelpfriends9"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_below="@id/txthelpfriends8"
+                android:src="@drawable/help_friends_9" />
+
+            <TextView
+                android:id="@+id/txthelpfriends9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelpfriends9"
+                android:layout_margin="20dp"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:text="FRIENDS TAB"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
