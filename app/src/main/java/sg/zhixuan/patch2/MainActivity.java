@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,6 +34,10 @@ import junit.framework.Test;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout btnAppt, btnMatchup, btnChats, btnProfile;
@@ -40,16 +45,19 @@ public class MainActivity extends AppCompatActivity {
     static FirebaseAuth mAuth;
     FirebaseUser firebaseUser;
     DatabaseReference mDatabase;
-    TextView txtMatchup, txtAppt, txtChat, txtProfile;
+    TextView txtMatchup, txtAppt, txtChat, txtProfile, txtHome;
     ImageView imgProfile, imgMatchup, imgChat, imgAppt;
     Button btnMore;
     static String uid;
     static Activity activity;
+    static String language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d("ZZZ", "LANGUAGE:" + language);
 
         activity = this;
         NotificationManager notificationmanager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -67,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
         imgMatchup = (ImageView)findViewById(R.id.imgMatchup);
         imgProfile = (ImageView)findViewById(R.id.imgProfile);
         btnMore = (Button)findViewById(R.id.btnMore);
+        txtHome = (TextView)findViewById(R.id.txtHome);
+
+        if (MainActivity.language.equals("Chinese"))
+            setChineseLanguage();
 
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference();
@@ -75,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
         uid = mAuth.getUid();
 
         FirebaseDatabase.getInstance().getReference().child("matchup").child("lookingForMatchup").child(uid).setValue("");
+        Calendar today = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String todaydate = simpleDateFormat.format(new Date());
+        FirebaseDatabase.getInstance().getReference().child("users").child(MainActivity.uid).child("lastSignedIn").setValue(todaydate);
 
         btnAppt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,5 +186,14 @@ public class MainActivity extends AppCompatActivity {
 
     public static void finishMainActivity() {
         activity.finish();
+    }
+
+    public void setChineseLanguage() {
+        txtProfile.setText("个人资料");
+        txtChat.setText("聊天");
+        txtAppt.setText("约会");
+        txtMatchup.setText("配对");
+        txtHome.setText("主页");
+        btnMore.setText("更多");
     }
 }

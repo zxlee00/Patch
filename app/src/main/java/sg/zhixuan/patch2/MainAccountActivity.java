@@ -35,6 +35,7 @@ public class MainAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_account);
 
+        checkLastSetLanguage();
         checkFirstTimeUse();
         if (isFirstTimeUser == true) {
             Intent intent = new Intent(this, PatchOnBoardingActivity.class);
@@ -122,5 +123,10 @@ public class MainAccountActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("IsFirstTimeUser", false);
         editor.commit();
+    }
+
+    private void checkLastSetLanguage() {
+        SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
+        MainActivity.language = sharedPreferences.getString("language", "English");
     }
 }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100"
+    android:orientation="vertical"
+    tools:context=".LanguageActivity"
+    android:background="#f0dfbb">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:text="LANGUAGE"
+        android:textColor="#782e2c"
+        android:padding="10dp"
+        android:background="@drawable/bottomborder"
+        android:fontFamily="@font/titillium"
+        android:autoSizeTextType="uniform"
+        android:id="@+id/language"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="20"
+        android:fontFamily="@font/titillium"
+        android:textColor="#203f58"
+        android:autoSizeTextType="uniform"
+        android:gravity="center"
+        android:padding="20dp"
+        android:id="@+id/txtChooseLanguage"
+        android:inputType="textMultiLine"
+        android:text="CHOOSE YOUR LANGUAGE / 请选择你的语言"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="70">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/btnEnglish"
+            android:text="ENGLISH"
+            android:background="@drawable/buttonstyle"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/titillium"
+            android:gravity="center"
+            android:padding="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/btnChinese"
+            android:text="中文"
+            android:background="@drawable/buttonstyle"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/titillium"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_below="@id/btnEnglish"
+            android:padding="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

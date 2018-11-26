@@ -18,7 +18,7 @@ public class MoreOptionsActivity extends AppCompatActivity {
 
     Button btnBack;
     LinearLayout btnSignOut, btnFriends, btnHelp, btnLanguage;
-    TextView txtSignOut, txtFriends, txtHelp, txtLanguage;
+    TextView txtSignOut, txtFriends, txtHelp, txtLanguage, txtMore;
     ImageView imgSignOut, imgFriends, imgHelp, imgLanguage;
 
     @Override
@@ -39,6 +39,10 @@ public class MoreOptionsActivity extends AppCompatActivity {
         imgHelp = (ImageView)findViewById(R.id.imgHelp);
         imgLanguage = (ImageView)findViewById(R.id.imgLanguage);
         imgSignOut = (ImageView)findViewById(R.id.imgSignOut);
+        txtMore = (TextView)findViewById(R.id.txtMore);
+
+        if (MainActivity.language.equals("Chinese"))
+            setChineseLanguage();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +88,13 @@ public class MoreOptionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MoreOptionsActivity.this, HelpActivity.class));
+            }
+        });
+
+        btnLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MoreOptionsActivity.this, LanguageActivity.class));
             }
         });
 
@@ -136,5 +147,20 @@ public class MoreOptionsActivity extends AppCompatActivity {
                 break;
         }
         return false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    public void setChineseLanguage() {
+        btnBack.setText("返回");
+        txtMore.setText("更多");
+        txtSignOut.setText("退出");
+        txtLanguage.setText("语言");
+        txtHelp.setText("帮助");
+        txtFriends.setText("朋友");
     }
 }

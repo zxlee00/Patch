@@ -16,6 +16,7 @@
         android:text="MORE"
         android:textColor="#782e2c"
         android:padding="10dp"
+        android:id="@+id/txtMore"
         android:fontFamily="@font/titillium"
         android:autoSizeTextType="uniform"
         android:textStyle="bold"

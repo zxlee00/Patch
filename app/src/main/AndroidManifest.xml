@@ -111,7 +111,8 @@
             android:name=".PatchOnBoardingActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".HelpActivity" />
-        <activity android:name=".MatchUpUserInformation"></activity>
+        <activity android:name=".MatchUpUserInformation" />
+        <activity android:name=".LanguageActivity"></activity>
     </application>
 
 </manifest>

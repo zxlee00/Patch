@@ -16,6 +16,7 @@
         android:text="HOME"
         android:textColor="#782e2c"
         android:padding="10dp"
+        android:id="@+id/txtHome"
         android:fontFamily="@font/titillium"
         android:autoSizeTextType="uniform"
         android:textStyle="bold"
