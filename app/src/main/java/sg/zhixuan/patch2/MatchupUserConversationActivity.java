@@ -46,7 +46,6 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
     ImageView sendButton;
     Firebase reference1, reference2;
     EditText messageArea;
-    String abc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
