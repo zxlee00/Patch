@@ -32,6 +32,7 @@ public class FriendInformationActivity extends AppCompatActivity {
     DatabaseReference ratingRef;
     DatabaseReference blacklistRef;
     DatabaseReference apptRef;
+    DatabaseReference messagesRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class FriendInformationActivity extends AppCompatActivity {
         contactRef = FirebaseDatabase.getInstance().getReference().child("contacts");
         blacklistRef = FirebaseDatabase.getInstance().getReference().child("blacklist");
         apptRef = FirebaseDatabase.getInstance().getReference().child("appointments");
+        messagesRef = FirebaseDatabase.getInstance().getReference().child("messages");
 
         friendgender.append(gender);
         friendname.setText(name);
@@ -103,6 +105,8 @@ public class FriendInformationActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 contactRef.child(MainActivity.uid).child(selectedFriend.uid).removeValue();
                                 contactRef.child(selectedFriend.uid).child(MainActivity.uid).removeValue();
+                                messagesRef.child(MainActivity.uid + "_" + selectedFriend.uid).removeValue();
+                                messagesRef.child(selectedFriend.uid + "_" + MainActivity.uid).removeValue();
 
                                 apptRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
@@ -174,6 +178,8 @@ public class FriendInformationActivity extends AppCompatActivity {
                                 blacklistRef.child(selectedFriend.uid).child(MainActivity.uid).setValue("");
                                 contactRef.child(MainActivity.uid).child(selectedFriend.uid).removeValue();
                                 contactRef.child(selectedFriend.uid).child(MainActivity.uid).removeValue();
+                                messagesRef.child(MainActivity.uid + "_" + selectedFriend.uid).removeValue();
+                                messagesRef.child(selectedFriend.uid + "_" + MainActivity.uid).removeValue();
 
                                 apptRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override

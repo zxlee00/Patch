@@ -84,6 +84,8 @@ public class MatchUpListAdapter extends RecyclerView.Adapter<MatchUpListAdapter.
                                         .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
+                                                matchupRef.child("messages").child(MainActivity.uid + "_" + matchedUpUserList.get(position).uid).removeValue();
+                                                matchupRef.child("messages").child(matchedUpUserList.get(position).uid + "_" + MainActivity.uid).removeValue();
                                                 matchupRef.child(MainActivity.uid).child(matchedUpUserList.get(position).uid).removeValue();
                                                 matchupRef.child(matchedUpUserList.get(position).uid).child(MainActivity.uid).removeValue();
                                                 requestRef.child(matchedUpUserList.get(position).uid).child(MainActivity.uid).removeValue();
