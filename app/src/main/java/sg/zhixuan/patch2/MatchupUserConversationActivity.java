@@ -65,7 +65,6 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
         sendButton = (ImageView)findViewById(R.id.sendButton);
         messageArea = (EditText)findViewById(R.id.messageArea);
         matchupScrollView = (ScrollView)findViewById(R.id.matchupscrollView);
-        matchupScrollView.fullScroll(View.FOCUS_DOWN);
 
         Firebase.setAndroidContext(this);
         reference1 = new Firebase("https://patchtesting2-3eb1a.firebaseio.com/matchup/messages/" + MainActivity.uid + "_" + MatchUpUserUID);
@@ -104,6 +103,13 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
                 else{
                     addMessageBox(message,time, 2);
                 }
+
+                matchupScrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        matchupScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                    }
+                });
             }
 
             @Override
@@ -146,6 +152,18 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
                             }
                         })
                         .show();
+            }
+        });
+
+        messageArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                matchupScrollView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        matchupScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                    }
+                },100);
             }
         });
     }
