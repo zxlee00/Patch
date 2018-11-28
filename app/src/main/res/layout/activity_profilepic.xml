@@ -70,12 +70,13 @@
         <Button
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@drawable/arrow_forward"
             android:text="Next"
             android:fontFamily="@font/titillium"
             android:textAllCaps="true"
-            android:textSize="25dp"
+            android:autoSizeTextType="uniform"
+            android:paddingRight="10dp"
             android:layout_column="1"/>
 
     </GridLayout>

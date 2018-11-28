@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class NameAgeActivity extends AppCompatActivity {
     EditText etName;
     Spinner spnAge, spnGender;
     Button btnBack, btnNext;
+    TextView nametext, signuptext1, agetext, gendertext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +33,12 @@ public class NameAgeActivity extends AppCompatActivity {
         btnBack = (Button) findViewById(R.id.btnBack);
         btnNext = (Button) findViewById(R.id.btnNext);
         spnGender = (Spinner)findViewById(R.id.spnGender);
+        nametext = (TextView)findViewById(R.id.nametext);
+        agetext = (TextView)findViewById(R.id.agetext);
+        gendertext = (TextView)findViewById(R.id.gendertext);
+        signuptext1 = (TextView)findViewById(R.id.signuptext1);
+
+        setChineseLanguage();
 
         List age = new ArrayList<Integer>();
         for (int i = 55; i <= 100; i++) {
@@ -40,8 +48,15 @@ public class NameAgeActivity extends AppCompatActivity {
         spnAge.setAdapter(spnArrayAdapter);
 
         List gender = new ArrayList<String>();
-        gender.add("Female");
-        gender.add("Male");
+
+        if (MainActivity.language.equals("Chinese")) {
+            gender.add("女");
+            gender.add("男");
+        } else if (MainActivity.language.equals("English")) {
+            gender.add("Female");
+            gender.add("Male");
+        }
+
         ArrayAdapter<String> spnGenderAdapter = new ArrayAdapter<String>(getBaseContext(), R.layout.support_simple_spinner_dropdown_item, gender);
         spnGender.setAdapter(spnGenderAdapter);
 
@@ -59,11 +74,24 @@ public class NameAgeActivity extends AppCompatActivity {
                 Integer age = Integer.parseInt(spnAge.getSelectedItem().toString());
                 String gender = spnGender.getSelectedItem().toString();
 
+                if (gender == "女")
+                    gender = "Female";
+                else if (gender == "男")
+                    gender = "Male";
+
                 if (!name.isEmpty() &&
                         name.matches("^[a-zA-Z\\s]*$")) {
                     MainAccountActivity.user.setName(name);
                 } else {
-                    etName.setError("Enter a valid name.");
+                    String error1 = "";
+
+                    if (MainActivity.language.equals("Chinese")) {
+                        error1 = "请您输入一个有效的姓名 （只接受英文字母）。";
+                    } else if (MainActivity.language.equals("English")) {
+                        error1 = "Enter a valid name.";
+                    }
+
+                    etName.setError(error1);
                     etName.requestFocus();
                     return;
                 }
@@ -74,5 +102,16 @@ public class NameAgeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            gendertext.setText("性别");
+            agetext.setText("年龄");
+            signuptext1.setText("注册");
+            nametext.setText("姓名 （英文字母）");
+            btnBack.setText("回去");
+            btnNext.setText("下一步");
+        }
     }
 }

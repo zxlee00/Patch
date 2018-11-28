@@ -158,9 +158,9 @@ public class MoreOptionsActivity extends AppCompatActivity {
     public void setChineseLanguage() {
         btnBack.setText("返回");
         txtMore.setText("更多");
-        txtSignOut.setText("退出");
+        txtSignOut.setText("退出账户");
         txtLanguage.setText("语言");
         txtHelp.setText("帮助");
-        txtFriends.setText("朋友");
+        txtFriends.setText("好友");
     }
 }

@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.concurrent.TimeUnit;
 
 public class LoginVerifyActivity extends AppCompatActivity {
@@ -38,6 +41,7 @@ public class LoginVerifyActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     DatabaseReference mDatabase, mUserReference;
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
+    TextView txtVerificationCode1, logintext2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,8 +51,12 @@ public class LoginVerifyActivity extends AppCompatActivity {
         etCode = (EditText) findViewById(R.id.etCode);
         btnBack = (Button) findViewById(R.id.btnBack);
         btnNext = (Button) findViewById(R.id.btnNext);
+        logintext2 = (TextView)findViewById(R.id.logintext2);
+        txtVerificationCode1 = (TextView)findViewById(R.id.txtVerificationCode1);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        setChineseLanguage();
 
         mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             @Override
@@ -91,7 +99,13 @@ public class LoginVerifyActivity extends AppCompatActivity {
                         TextUtils.isDigitsOnly(code)) {
                     verifyCode(code);
                 } else {
-                    etCode.setError("Enter a valid code.");
+                    String error2 = "";
+                    if (MainActivity.language.equals("Chinese")) {
+                        error2 = "请输入一个有效的验证码。";
+                    } else if (MainActivity.language.equals("English")){
+                        error2 = "Enter a valid code.";
+                    }
+                    etCode.setError(error2);
                     etCode.requestFocus();
                 }
             }
@@ -134,11 +148,23 @@ public class LoginVerifyActivity extends AppCompatActivity {
                     });
                 } else {
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                        etCode.setError("Invalid code, new code will be sent.");
+                        String error1 = "";
+                        if (MainActivity.language.equals("Chinese")) {
+                            error1 = "您输入的验证码是无效的，新的验证码将会被发送到你的手机。";
+                        } else if (MainActivity.language.equals("English")) {
+                            error1 = "Invalid code, new code will be sent.";
+                        }
+                        etCode.setError(error1);
                         etCode.requestFocus();
                         sendCode(phoneNumber);
                     } else {
-                        Toast.makeText(LoginVerifyActivity.this, "Wrong verification code, please try again.", Toast.LENGTH_LONG).show();
+                        String error3 = "";
+                        if (MainActivity.language.equals("Chinese")) {
+                            error3 = "您输入的验证码是不正确的，请重新试一下。";
+                        } else if (MainActivity.language.equals("English")) {
+                            error3 = "Wrong verification code, please try again.";
+                        }
+                        Toast.makeText(LoginVerifyActivity.this, error3, Toast.LENGTH_LONG).show();
                         //Log.d(TAG, "onComplete: ", task.getException());
                     }
                 }
@@ -153,5 +179,14 @@ public class LoginVerifyActivity extends AppCompatActivity {
                 TimeUnit.SECONDS,
                 this,
                 mCallback);
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            logintext2.setText("登录");
+            txtVerificationCode1.setText("验证码");
+            btnBack.setText("上一步");
+            btnNext.setText("下一步");
+        }
     }
 }

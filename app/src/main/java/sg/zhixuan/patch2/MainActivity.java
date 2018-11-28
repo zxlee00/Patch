@@ -190,8 +190,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void setChineseLanguage() {
         txtProfile.setText("个人资料");
-        txtChat.setText("聊天");
-        txtAppt.setText("约会");
+        txtChat.setText("好友对话");
+        txtAppt.setText("预约");
         txtMatchup.setText("配对");
         txtHome.setText("主页");
         btnMore.setText("更多");

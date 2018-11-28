@@ -64,21 +64,24 @@
                 <Button
                     android:id="@+id/btnBack"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:background="@drawable/arrow_back"
                     android:text="BACK"
                     android:fontFamily="@font/titillium"
-                    android:textSize="25sp"
+                    android:paddingLeft="10dp"
+                    android:autoSizeTextType="uniform"
                     android:layout_gravity="left"/>
 
                 <Button
                     android:id="@+id/btnComplete"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:background="@drawable/arrow_forward"
                     android:text="COMPLETE"
+                    android:paddingRight="20dp"
+                    android:autoSizeTextType="uniform"
+                    android:paddingLeft="10dp"
                     android:fontFamily="@font/titillium"
-                    android:textSize="25sp"
                     android:layout_column="1"/>
 
             </GridLayout>

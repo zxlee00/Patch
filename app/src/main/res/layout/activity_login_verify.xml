@@ -20,6 +20,7 @@
         android:fontFamily="@font/titillium"
         android:textColor="#d08363"
         android:layout_weight=".5"
+        android:id="@+id/logintext2"
         android:gravity="center"/>
 
     <LinearLayout
@@ -35,6 +36,7 @@
             android:textAllCaps="true"
             android:text="Verification Code:"
             android:textSize="24sp"
+            android:id="@+id/txtVerificationCode1"
             android:fontFamily="@font/titillium"
             android:textColor="#203f58"/>
 
@@ -58,23 +60,25 @@
         <Button
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@drawable/arrow_back"
             android:text="Back"
             android:fontFamily="@font/titillium"
             android:textAllCaps="true"
-            android:textSize="25sp"
+            android:autoSizeTextType="uniform"
+            android:paddingLeft="10dp"
             android:layout_gravity="left"/>
 
         <Button
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:background="@drawable/arrow_forward"
             android:text="Next"
             android:fontFamily="@font/titillium"
             android:textAllCaps="true"
-            android:textSize="25dp"
+            android:autoSizeTextType="uniform"
+            android:paddingRight="10dp"
             android:layout_column="1"/>
 
     </GridLayout>

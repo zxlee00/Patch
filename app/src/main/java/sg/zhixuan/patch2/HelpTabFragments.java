@@ -25,7 +25,7 @@ public class HelpTabFragments {
 
             TextView txthelpmatchup3 = (TextView)view.findViewById(R.id.txthelpmatchup3);
             txthelpmatchup3.setText("As you can see here, we have found you another Patch user, Peter Lim.\nInformation such as the user's age, gender, rating will be displayed.\n" +
-                    "To maintain the user's privacy, during the match-up, we will keep the user's picture private.\nThe max rating a user can get is 5.00. In this case, Peter has a rating of 4.90. This will be based on the feedbacks from other users who are friends with Peter.\n" +
+                    "To maintain the user's privacy, during the match-up, we will keep the user's picture private.\nThe max rating a user can get is 5.00. In this case, Peter has a rating of 4.90. This will be based on the feedbacks other users have given Peter.\n" +
                     "Other than these, Peter's hobbies will also be displayed.\n" +
                     "\nYou can then decide if you want to be matched up with Peter after looking through his hobbies and other details such as gender, age and rating by selecting the 'YES' or 'NO' buttons.");
 

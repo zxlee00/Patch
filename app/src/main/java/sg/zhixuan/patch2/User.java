@@ -14,7 +14,7 @@ public class User {
     public String profilePic;
     public String hobby;
     public String gender;
-    public String lastSignedInDate;
+    public String lastSignedIn;
 
     public User() {
     }
@@ -25,7 +25,7 @@ public class User {
         this.uid = uid;
     }
 
-    public User(String uid, String name, int age, String phoneNumber, String profilePic, String hobby, String gender, String lastSignedInDate) {
+    public User(String uid, String name, int age, String phoneNumber, String profilePic, String hobby, String gender, String lastSignedIn) {
         this.uid = uid;
         this.name = name;
         this.age = age;
@@ -33,7 +33,7 @@ public class User {
         this.profilePic = profilePic;
         this.hobby = hobby;
         this.gender = gender;
-        this.lastSignedInDate = lastSignedInDate;
+        this.lastSignedIn = lastSignedIn;
     }
 
     public String getUid() {
@@ -92,11 +92,11 @@ public class User {
         this.gender = gender;
     }
 
-    public String getLastSignedInDate() {
-        return lastSignedInDate;
+    public String getLastSignedIn() {
+        return lastSignedIn;
     }
 
-    public void setLastSignedInDate(String lastSignedInDate) {
-        this.lastSignedInDate = lastSignedInDate;
+    public void setLastSignedIn(String lastSignedIn) {
+        this.lastSignedIn = lastSignedIn;
     }
 }

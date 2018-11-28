@@ -29,6 +29,8 @@ public class MainAccountActivity extends AppCompatActivity {
     DatabaseReference mUserReference;
     AlertDialog.Builder alertDialog;
     boolean isFirstTimeUser;
+    Button btnSignUp, btnLogin;
+    Button btnSetLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,11 @@ public class MainAccountActivity extends AppCompatActivity {
             setNotFirstTimeUser();
         }
 
-        Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnSignUp = (Button) findViewById(R.id.btnSignUp);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnSetLanguage = (Button)findViewById(R.id.btnSetLanguage);
+
+        setChineseLanguage();
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +114,13 @@ public class MainAccountActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnSetLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainAccountActivity.this, LanguageActivity.class));
+            }
+        });
     }
 
     //check if user is a first time user
@@ -128,5 +140,12 @@ public class MainAccountActivity extends AppCompatActivity {
     private void checkLastSetLanguage() {
         SharedPreferences sharedPreferences = getSharedPreferences("shared preferences", MODE_PRIVATE);
         MainActivity.language = sharedPreferences.getString("language", "English");
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            btnSignUp.setText("注册");
+            btnLogin.setText("登录");
+        }
     }
 }

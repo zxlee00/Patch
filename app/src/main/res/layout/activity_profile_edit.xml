@@ -109,9 +109,10 @@
                 <GridView
                     android:id="@+id/gvHobby"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:clickable="true"
                     android:layout_below="@+id/tvHobbies"
+                    android:nestedScrollingEnabled="true"
                     android:numColumns="2" />
 
             </RelativeLayout>
