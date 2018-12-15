@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
     Uri uri;
+    TextView signuptext4, txtprofilepicprompt, profilepic;
 
     private static final String TAG = "ProfileActivity";
     @Override
@@ -60,8 +62,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         ivProfile = (ImageView) findViewById(R.id.ivProfile);
         btnNext = (Button) findViewById(R.id.btnNext);
+        signuptext4 = (TextView)findViewById(R.id.signuptext4);
+        txtprofilepicprompt = (TextView)findViewById(R.id.txtprofilepicprompt);
+        profilepic = (TextView)findViewById(R.id.profilepic);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+        setChineseLanguage();
 
         ivProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,9 +76,22 @@ public class ProfileActivity extends AppCompatActivity {
                 if (checkPermission()) { //permission is allowed
                     showPictureDialog();
                 } else if (!checkPermission()){ //permission is revoked by user
+                    String message = "";
+                    if(MainActivity.language.equals("Chinese")) {
+                        message = "请准许使用相机和存储的权限";
+                    } else if (MainActivity.language.equals("English")) {
+                        message = "Please allow access to camera and storage to add profile picture.";
+                    }
+
+                    String back = "";
+                    if(MainActivity.language.equals("Chinese")) {
+                        back = "关闭";
+                    } else if (MainActivity.language.equals("English")) {
+                        back = "Back";
+                    }
                     new AlertDialog.Builder(view.getContext())
-                            .setMessage("Please allow access to camera and storage to add profile picture.")
-                            .setNeutralButton("Back",
+                            .setMessage(message)
+                            .setNeutralButton(back,
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -93,7 +113,11 @@ public class ProfileActivity extends AppCompatActivity {
     private void uploadImage() {
         if (uri != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading...");
+            String uploadmsg = "Uploading...";
+            if (MainActivity.language.equals("Chinese")) {
+                uploadmsg = "上传中。。。";
+            }
+            progressDialog.setTitle(uploadmsg);
             progressDialog.show();
 
             final StorageReference ref = storageReference.child("images/" + MainAccountActivity.user.getUid());
@@ -167,10 +191,19 @@ public class ProfileActivity extends AppCompatActivity {
     //dialog to prompt user to choose method of getting image
     private void showPictureDialog() {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-        pictureDialog.setTitle("Select Action");
+        String title = "Select Action";
+        String item1 = "Select from gallery";
+        String item2 = "Capture from camera";
+        if (MainActivity.language.equals("Chinese")) {
+            title = "选项";
+            item1 = "从照片库选择头像";
+            item2 = "从相机捕捉头像";
+        }
+        pictureDialog.setTitle(title);
+
         String[] pictureDialogItems = {
-                "Select from gallery",
-                "Capture from camera"
+                item1,
+                item2
         };
         pictureDialog.setItems(pictureDialogItems,
                 new DialogInterface.OnClickListener() {
@@ -222,5 +255,12 @@ public class ProfileActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private void setChineseLanguage() {
+        txtprofilepicprompt.setText("按图标即可选择想上传的头像");
+        signuptext4.setText("注册");
+        profilepic.setText("头像");
+        btnNext.setText("下一步");
     }
 }

@@ -36,7 +36,7 @@ public class MatchUpActivity extends AppCompatActivity {
     User matchedUpUser;
     ProgressBar progress_bar;
     String sameHobbies = "";
-    TextView txtSameHobbies, txtMatchedUpUserHobby, txtSuccessful, txtQn, txtName, matchup, txtAge, txtGender, txtRating;
+    TextView txtSameHobbies, txtMatchedUpUserHobby, txtSuccessful, txtQn, txtName, matchup, txtAge, txtGender, txtRating, viewfeedback, txtFailure;
     Button btnYes, btnNo;
     String userName;
     Boolean matched = false;
@@ -63,10 +63,12 @@ public class MatchUpActivity extends AppCompatActivity {
         txtName = (TextView)findViewById(R.id.txtName);
         btnNo = (Button)findViewById(R.id.btnNo);
         btnYes = (Button)findViewById(R.id.btnYes);
+        txtFailure = (TextView)findViewById(R.id.txtFailure);
         btnMatchUpViewFeedbacks = (Button)findViewById(R.id.btnMatchUpViewFeedbacks);
         progress_bar = (ProgressBar)findViewById(R.id.progress_bar);
         scrollView = (ScrollView)findViewById(R.id.scrollview);
         matchupdetails = (RelativeLayout)findViewById(R.id.matchupdetails);
+        viewfeedback = (TextView)findViewById(R.id.viewfeedback);
         findingMatchupList = new ArrayList<String>();
         selectedUsersList = new ArrayList<User>();
         sameHobbyUsersList = new ArrayList<User>();
@@ -74,6 +76,8 @@ public class MatchUpActivity extends AppCompatActivity {
         blackList = new ArrayList<String>();
         contactList = new ArrayList<String>();
         matchupReference = FirebaseDatabase.getInstance().getReference().child("matchup");
+
+        setChineseLanguage();
 
         userReference = FirebaseDatabase.getInstance().getReference().child("users");
         contactReference = FirebaseDatabase.getInstance().getReference().child("contacts");
@@ -185,7 +189,11 @@ public class MatchUpActivity extends AppCompatActivity {
                                                 ratingRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                        txtRating.setText("Rating: " + dataSnapshot.child(matchedUpUser.uid).child("rating").getValue(String.class));
+                                                        String rating = "Rating: ";
+                                                        if (MainActivity.language.equals("Chinese")) {
+                                                            rating = "评分：";
+                                                        }
+                                                        txtRating.setText(rating + dataSnapshot.child(matchedUpUser.uid).child("rating").getValue(String.class));
                                                     }
 
                                                     @Override
@@ -197,8 +205,16 @@ public class MatchUpActivity extends AppCompatActivity {
                                                 txtName.setText(matchedUpUser.name);
                                                 txtAge.append(String.valueOf(matchedUpUser.age));
                                                 txtGender.append(String.valueOf(matchedUpUser.gender));
-                                                txtSameHobbies.setText("Same Hobbies:\n" + sameHobbies);
-                                                txtMatchedUpUserHobby.setText("Matched up user has these hobbies:\n" + matchedUpUser.hobby);
+
+                                                String strSameHobbies = "Same Hobbies:\n";
+                                                String strMatchedUpUserHobbies = "Matched up user has these hobbies:\n";
+                                                if (MainActivity.language.equals("Chinese")) {
+                                                    strSameHobbies = "相同的爱好：\n";
+                                                    strMatchedUpUserHobbies = "配对到的用户有这些爱好：\n";
+                                                }
+
+                                                txtSameHobbies.setText(strSameHobbies + sameHobbies);
+                                                txtMatchedUpUserHobby.setText(strMatchedUpUserHobbies + matchedUpUser.hobby);
                                             }
                                         }
                                     }
@@ -260,5 +276,22 @@ public class MatchUpActivity extends AppCompatActivity {
                 startActivity(new Intent(MatchUpActivity.this, ViewFeedbackActivity.class));
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            matchup.setText("配对");
+            txtSuccessful.setText("根据您的爱好，我们为您找到了一位用户。");
+            txtAge.setText("年龄：");
+            txtGender.setText("性别：");
+            txtRating.setText("评分");
+            viewfeedback.setText("在接受之前，您也许会想要查看有关此用户的一些反馈。");
+            btnMatchUpViewFeedbacks.setText("查看反馈");
+            txtQn.setText("与这位用户配对吗？");
+            btnYes.setText("同意");
+            btnNo.setText("拒绝");
+            txtFailure.setText("此刻暂时没有其他用户在寻找配对，请稍后再重试。");
+            btnSure.setText("知道了！");
+        }
     }
 }

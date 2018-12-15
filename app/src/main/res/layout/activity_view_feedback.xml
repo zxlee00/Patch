@@ -36,6 +36,7 @@
             android:text="VIEW FEEDBACK"
             android:textColor="#782e2c"
             android:padding="10dp"
+            android:id="@+id/viewfeedback1"
             android:fontFamily="@font/titillium"
             android:autoSizeTextType="uniform"
             android:textStyle="bold"

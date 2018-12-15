@@ -19,7 +19,7 @@
         android:background="@drawable/bottomborder"
         android:fontFamily="@font/titillium"
         android:autoSizeTextType="uniform"
-        android:id="@+id/matchup"
+        android:id="@+id/friends1"
         android:textStyle="bold"
         android:gravity="center"/>
 
@@ -61,6 +61,7 @@
                 android:autoSizeTextType="uniform"
                 android:textStyle="bold"
                 android:gravity="center"
+                android:id="@+id/hometext2"
                 android:fontFamily="@font/titillium"/>
 
         </LinearLayout>

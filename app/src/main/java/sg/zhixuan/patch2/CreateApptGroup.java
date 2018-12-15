@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -18,6 +19,7 @@ import java.util.List;
 public class CreateApptGroup extends AppCompatActivity {
 
     RecyclerView rvApptPartyList;
+    TextView createappttext, txtInstructions;
     private FirebaseUser firebaseUser;
     private FirebaseAuth mAuth;
     String uid;
@@ -30,6 +32,10 @@ public class CreateApptGroup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_appt_group);
+
+        createappttext = (TextView)findViewById(R.id.createappt1);
+        txtInstructions = (TextView)findViewById(R.id.txtInstructions);
+        setChineseLanguage();
 
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
@@ -66,5 +72,12 @@ public class CreateApptGroup extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if(MainActivity.language.equals("Chinese")) {
+            txtInstructions.setText("请选择与哪位朋友创造预约：");
+            createappttext.setText("创造预约");
+        }
     }
 }

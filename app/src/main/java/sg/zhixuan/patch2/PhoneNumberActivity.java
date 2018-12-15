@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +23,7 @@ public class PhoneNumberActivity extends AppCompatActivity {
     private static final String TAG = "PhoneNumberActivity";
     EditText etPhoneNumber;
     Button btnBack, btnNext;
+    TextView signuptext2, txtphoneno2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,6 +33,10 @@ public class PhoneNumberActivity extends AppCompatActivity {
         etPhoneNumber = (EditText) findViewById(R.id.etPhoneNumber);
         btnBack = (Button) findViewById(R.id.btnBack);
         btnNext = (Button) findViewById(R.id.btnNext);
+        signuptext2 = (TextView)findViewById(R.id.signuptext2);
+        txtphoneno2 = (TextView)findViewById(R.id.txtphoneno2);
+
+        setChineseLanguage();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +59,13 @@ public class PhoneNumberActivity extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
                                 //user exists
-                                etPhoneNumber.setError("Phone number already in use.");
+                                String error1 = "";
+                                if(MainActivity.language.equals("Chinese")) {
+                                    error1 = "您输入的电话号码已经在使用中了，请重新输入。";
+                                } else if (MainActivity.language.equals("English")) {
+                                    error1 = "Phone number already in use.";
+                                }
+                                etPhoneNumber.setError(error1);
                                 etPhoneNumber.requestFocus();
                                 Log.d(TAG, "onDataChange: user exists");
                             } else {
@@ -72,10 +84,25 @@ public class PhoneNumberActivity extends AppCompatActivity {
                     });
 
                 } else {
-                    etPhoneNumber.setError("Enter a valid phone number.");
+                    String error2 = "";
+                    if(MainActivity.language.equals("Chinese")) {
+                        error2 = "请您输入一个有效的电话号码。";
+                    } else if (MainActivity.language.equals("English")) {
+                        error2 = "Enter a valid phone number.";
+                    }
+                    etPhoneNumber.setError(error2);
                     etPhoneNumber.requestFocus();
                 }
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            signuptext2.setText("注册");
+            txtphoneno2.setText("电话号码");
+            btnBack.setText("上一步");
+            btnNext.setText("下一步");
+        }
     }
 }

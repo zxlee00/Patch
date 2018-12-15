@@ -25,7 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class ProfilePageActivity extends AppCompatActivity {
-    TextView tvName, tvAge, tvHobbies, tvGender;
+    TextView tvName, tvAge, tvHobbies, tvGender, profiletext, scrolldownprompt, hometext;
     ImageView ivProfile;
     Button btnEdit;
     LinearLayout btnHome;
@@ -44,6 +44,11 @@ public class ProfilePageActivity extends AppCompatActivity {
         btnEdit = (Button) findViewById(R.id.btnEdit);
         btnHome = (LinearLayout) findViewById(R.id.btnHome);
         tvGender = (TextView)findViewById(R.id.tvGender);
+        profiletext = (TextView)findViewById(R.id.profiletext);
+        scrolldownprompt = (TextView)findViewById(R.id.scrolldownprompt);
+        hometext = (TextView)findViewById(R.id.hometext1);
+
+        setChineseLanguage();
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference imgRef = storage.getReferenceFromUrl(MainAccountActivity.user.getProfilePic());
@@ -105,5 +110,17 @@ public class ProfilePageActivity extends AppCompatActivity {
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE))
                 .into(ivProfile);
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            tvAge.setText("年龄：");
+            tvGender.setText("性别：");
+            tvHobbies.setText("兴趣/爱好：");
+            btnEdit.setText("编辑");
+            profiletext.setText("用户资料");
+            scrolldownprompt.setText("请下拉查看更多");
+            hometext.setText("主页");
+        }
     }
 }

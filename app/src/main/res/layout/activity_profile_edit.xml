@@ -14,14 +14,14 @@
         android:text="EDIT PROFILE"
         android:gravity="center"
         android:textColor="#5e2a40"
-        android:id="@+id/txtProfile"
+        android:id="@+id/txtEditProfile"
         android:fontFamily="@font/titillium"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="#000000"
-        android:layout_below="@+id/txtProfile"
+        android:layout_below="@+id/txtEditProfile"
         android:id="@+id/line"/>
 
     <ScrollView

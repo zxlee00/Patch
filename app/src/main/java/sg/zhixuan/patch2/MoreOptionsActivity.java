@@ -54,16 +54,33 @@ public class MoreOptionsActivity extends AppCompatActivity {
         btnSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String signout = "";
+                String confirmationmsg = "";
+                String cancel = "";
+                String confirm = "";
+
+                if (MainActivity.language.equals("Chinese")) {
+                    signout = "退出账户";
+                    confirmationmsg = "确定退出账户吗？";
+                    cancel = "取消";
+                    confirm = "确定";
+                } else if (MainActivity.language.equals("English")) {
+                    signout = "Sign Out";
+                    confirmationmsg = "Are you sure you want to sign out?";
+                    cancel = "Cancel";
+                    confirm = "Confirm";
+                }
+
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(MoreOptionsActivity.this);
-                alertDialog.setTitle("Sign Out")
-                        .setMessage("Are you sure you want to sign out?")
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                alertDialog.setTitle(signout)
+                        .setMessage(confirmationmsg)
+                        .setNegativeButton(cancel, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
                         })
-                        .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(confirm, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 MainActivity.mAuth.signOut();

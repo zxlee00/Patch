@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +28,7 @@ public class MatchupConversationActivity extends AppCompatActivity {
     RecyclerView rvMatchedUpList;
     MatchUpListAdapter matchUpListAdapter;
     Button btnCheckRequest;
+    TextView conversation, txtfoundbyyou, txtotherpartyfoundyou;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +38,11 @@ public class MatchupConversationActivity extends AppCompatActivity {
         matchedUpUsersList = new ArrayList<MatchUpUser>();
         rvMatchedUpList = (RecyclerView)findViewById(R.id.rvMatchUpList);
         btnCheckRequest = (Button)findViewById(R.id.btnCheckRequests);
+        conversation = (TextView)findViewById(R.id.conversation);
+        txtfoundbyyou = (TextView)findViewById(R.id.txtfoundbyyou);
+        txtotherpartyfoundyou = (TextView)findViewById(R.id.txtotherpartyfoundyou);
 
-        //Todo: Retrieve list of matched up people. Design interface such that they can send invitation to one another.
-        //Todo: Use some sort of key word?
+        setChineseLanguage();
 
         userRef = FirebaseDatabase.getInstance().getReference().child("users");
         matchedupUsersRef = FirebaseDatabase.getInstance().getReference().child("matchup").child(MainActivity.uid);
@@ -85,5 +89,14 @@ public class MatchupConversationActivity extends AppCompatActivity {
                 startActivity(new Intent(MatchupConversationActivity.this, RequestActivity.class));
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            conversation.setText("对话");
+            btnCheckRequest.setText("查看好友请求");
+            txtfoundbyyou.setText("您寻找到的用户");
+            txtotherpartyfoundyou.setText("对方寻找到你的用户");
+        }
     }
 }

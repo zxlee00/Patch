@@ -40,6 +40,7 @@
             android:autoSizeTextType="uniform"
             android:text="Want to be friends?"
             android:gravity="center"
+            android:id="@+id/prompt"
             android:fontFamily="@font/titillium"/>
 
         <Button

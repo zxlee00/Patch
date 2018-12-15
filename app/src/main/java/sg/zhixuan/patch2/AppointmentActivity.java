@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -41,6 +42,7 @@ public class AppointmentActivity extends AppCompatActivity {
     LinearLayout btnHome;
     ImageButton btnAddAppt;
     RecyclerView rvApptList;
+    TextView txtAppt, hometext;
     private DatabaseReference mDatabase;
     private RecyclerView rvAppointments;
     private FirebaseUser firebaseUser;
@@ -59,7 +61,12 @@ public class AppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointment);
 
+        txtAppt = (TextView)findViewById(R.id.txtAppt);
+        hometext = (TextView)findViewById(R.id.hometext);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
+
+        setChineseLanguage();
+
         mAuth = FirebaseAuth.getInstance();
         firebaseUser = mAuth.getCurrentUser();
         uid = firebaseUser.getUid();
@@ -176,22 +183,40 @@ public class AppointmentActivity extends AppCompatActivity {
                     @Override
                     public boolean onLongClick(View v) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(AppointmentActivity.this);
-                        alertDialog.setTitle("Delete Appointment");
-                        alertDialog.setMessage("Are you sure you want to delete this appointment?" +
+
+                        String title = "Delete Appointment";
+                        String message = "Are you sure you want to delete this appointment?" +
                                 "\n\nWith: " + holder.txtApptParty.getText() +
                                 "\nName: " + holder.txtApptTitle.getText() +
                                 "\nLocation: " + holder.txtApptLocation.getText() +
                                 "\nDate: " + holder.txtApptDate.getText() +
-                                "\nTime: " + holder.txtApptTime.getText());
+                                "\nTime: " + holder.txtApptTime.getText();
+                        String posbtn = "CONFIRM";
+                        String negbtn = "CANCEL";
 
-                        alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        if (MainActivity.language.equals("Chinese")) {
+                            title = "删除预约";
+                            message = "您确定要删除此约会吗？" +
+                                    "\n\n与：" + holder.txtApptParty.getText() +
+                                    "\n预约名称：" + holder.txtApptTitle.getText() +
+                                    "\n地点：" + holder.txtApptLocation.getText() +
+                                    "\n日期：" + holder.txtApptDate.getText() +
+                                    "\n时间：" + holder.txtApptTime.getText();
+                            posbtn = "确定";
+                            negbtn = "取消";
+                        }
+
+                        alertDialog.setTitle(title);
+                        alertDialog.setMessage(message);
+
+                        alertDialog.setNegativeButton(negbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
                         });
 
-                        alertDialog.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                        alertDialog.setPositiveButton(posbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Log.d("ZZZ", Integer.toString(holder.getAdapterPosition()));
@@ -291,5 +316,12 @@ public class AppointmentActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, alarmCodeToBeCancelled, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.cancel(pendingIntent);
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            txtAppt.setText("预约");
+            hometext.setText("主页");
+        }
     }
 }

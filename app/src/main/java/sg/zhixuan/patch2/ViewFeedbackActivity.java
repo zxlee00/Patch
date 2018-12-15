@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +27,7 @@ public class ViewFeedbackActivity extends AppCompatActivity {
     Button btnViewFeedbacksToFriendInfoActivity;
     static User selectedUser;
     List<String> feedbackList;
+    TextView viewfeedback1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,9 @@ public class ViewFeedbackActivity extends AppCompatActivity {
 
         btnViewFeedbacksToFriendInfoActivity = (Button)findViewById(R.id.btnViewFeedbacksToFriendInfoActivity);
         rvFeedbacks = (RecyclerView)findViewById(R.id.rvFeedbacks);
+        viewfeedback1 = (TextView)findViewById(R.id.viewfeedback1);
+
+        setChineseLanguage();
 
         feedbackList = new ArrayList<String>();
         feedbackRef = FirebaseDatabase.getInstance().getReference().child("ratingfeedback").child(selectedUser.uid).child("feedback");
@@ -63,5 +68,11 @@ public class ViewFeedbackActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            viewfeedback1.setText("查看反馈");
+        }
     }
 }

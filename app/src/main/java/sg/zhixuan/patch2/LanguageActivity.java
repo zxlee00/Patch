@@ -41,8 +41,12 @@ public class LanguageActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
-                        })
-                        .show();
+                        });
+
+                AlertDialog alert = alertDialog.create();
+                alert.setCancelable(false);
+                alert.setCanceledOnTouchOutside(false);
+                alert.show();
             }
         });
 
@@ -66,8 +70,12 @@ public class LanguageActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
-                        })
-                        .show();
+                        });
+
+                AlertDialog alert = alertDialog.create();
+                alert.setCancelable(false);
+                alert.setCanceledOnTouchOutside(false);
+                alert.show();
             }
         });
     }
@@ -90,9 +98,7 @@ public class LanguageActivity extends AppCompatActivity {
                             dialog.cancel();
                             finish();
                         }
-                    })
-                    .show();
-
+                    });
         } else if (alertdialoglanguage.equals("English")) {
             closeAppDialog.setTitle("Close Application")
                     .setMessage("If you want to see the changes to the language, please restart Patch.")
@@ -102,8 +108,12 @@ public class LanguageActivity extends AppCompatActivity {
                                 dialog.cancel();
                                 finish();
                             }
-                        })
-                        .show();
+                        });
         }
+
+        AlertDialog closedialog = closeAppDialog.create();
+        closedialog.setCancelable(false);
+        closedialog.setCanceledOnTouchOutside(false);
+        closedialog.show();
     }
 }

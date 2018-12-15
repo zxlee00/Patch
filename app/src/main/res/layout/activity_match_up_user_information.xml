@@ -39,7 +39,7 @@
             android:background="@drawable/bottomborder"
             android:fontFamily="@font/titillium"
             android:autoSizeTextType="uniform"
-            android:id="@+id/friends"
+            android:id="@+id/matchupuserinformation"
             android:textStyle="bold"
             android:gravity="center"/>
 

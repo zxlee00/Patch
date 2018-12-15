@@ -38,7 +38,7 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
     static String MatchUpUserName, MatchUpUserHobbies, MatchUpUserUID;
     LinearLayout matchuplayout1;
     RelativeLayout matchuplayout2;
-    TextView txtMatchupUser;
+    TextView txtMatchupUser, prompt;
     Button btnSendRequest;
     DatabaseReference requestRef;
     SimpleDateFormat sdf;
@@ -58,6 +58,7 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
 
         requestRef = FirebaseDatabase.getInstance().getReference().child("requests").child(MatchUpUserUID);
         btnSendRequest = (Button)findViewById(R.id.btnSendRequest);
+        prompt = (TextView)findViewById(R.id.prompt);
         txtMatchupUser = (TextView)findViewById(R.id.txtMatchupUser);
         txtMatchupUser.setText(MatchUpUserName);
         matchuplayout1 = (LinearLayout)findViewById(R.id.matchuplayout1);
@@ -65,6 +66,8 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
         sendButton = (ImageView)findViewById(R.id.sendButton);
         messageArea = (EditText)findViewById(R.id.messageArea);
         matchupScrollView = (ScrollView)findViewById(R.id.matchupscrollView);
+
+        setChineseLanguage();
 
         Firebase.setAndroidContext(this);
         reference1 = new Firebase("https://patchtesting2-3eb1a.firebaseio.com/matchup/messages/" + MainActivity.uid + "_" + MatchUpUserUID);
@@ -137,15 +140,25 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MatchupUserConversationActivity.this);
-                builder.setTitle("Send Request")
-                        .setMessage("Confirm to send request? This action cannot be undone.")
-                        .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                String title = "Send Request";
+                String message = "Confirm to send request? This action cannot be undone.";
+                String posbtn = "CONFIRM";
+                String negbtn = "CANCEL";
+                if (MainActivity.language.equals("Chinese")) {
+                    title = "发送好友请求";
+                    message = "确定发送好友请求吗？请注意，一旦发送了，就无法撤销此操作了。";
+                    posbtn = "确定";
+                    negbtn = "取消";
+                }
+                builder.setTitle(title)
+                        .setMessage(message)
+                        .setPositiveButton(posbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 requestRef.child(MainActivity.uid).setValue(MainAccountActivity.user.name);
                             }
                         })
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(negbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
@@ -207,5 +220,13 @@ public class MatchupUserConversationActivity extends AppCompatActivity {
         matchuplayout1.addView(textmsg);
         matchuplayout1.addView(texttime);
         matchupScrollView.fullScroll(View.FOCUS_DOWN);
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            prompt.setText("想成为好友吗？");
+            btnSendRequest.setText("发送好友请求");
+            messageArea.setHint("输入信息。。。");
+        }
     }
 }

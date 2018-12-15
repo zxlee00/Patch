@@ -17,6 +17,7 @@
         android:textAllCaps="true"
         android:text="Sign Up"
         android:textSize="36sp"
+        android:id="@+id/signuptext2"
         android:fontFamily="@font/titillium"
         android:textColor="#9e6759"
         android:layout_weight=".5"
@@ -35,6 +36,7 @@
             android:textAllCaps="true"
             android:text="Phone Number:"
             android:textSize="24sp"
+            android:id="@+id/txtphoneno2"
             android:fontFamily="@font/titillium"
             android:textColor="#203f58"/>
 

@@ -82,6 +82,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="50"
                 android:textColor="#203b58"
+                android:id="@+id/txtfoundbyyou"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/titillium"
                 android:text="FOUND BY YOU"
@@ -94,6 +95,7 @@
                 android:textColor="#203b58"
                 android:autoSizeTextType="uniform"
                 android:fontFamily="@font/titillium"
+                android:id="@+id/txtotherpartyfoundyou"
                 android:text="OTHER PARTY FOUND YOU"
                 android:gravity="center_vertical"/>
 

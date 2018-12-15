@@ -34,6 +34,7 @@
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
             android:autoSizeTextType="uniform"
+            android:id="@+id/createappt1"
             android:text="CREATE APPOINTMENT"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -55,7 +56,7 @@
         android:paddingBottom="5dp"
         android:inputType="textMultiLine"
         android:gravity="center"
-        android:text="Please select group/friend you want to \ncreate appointment for:"
+        android:text="Please select the friend you want to \ncreate appointment for:"
         android:fontFamily="@font/titillium"
         android:layout_below="@+id/txtCreateAppt"
         />

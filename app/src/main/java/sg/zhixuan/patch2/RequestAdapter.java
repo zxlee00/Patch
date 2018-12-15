@@ -52,15 +52,30 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
     public void onBindViewHolder(@NonNull RequestViewHolder holder, final int position) {
         final Request request = requestList.get(position);
 
+        if (MainActivity.language.equals("Chinese")) {
+            holder.btnAccept.setText("接受");
+            holder.btnDecline.setText("拒绝");
+        }
+
         holder.txtRequestUserName.setText(request.name);
 
         holder.btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Accept")
-                        .setMessage("Are you sure to accept this request from " + request.name + "?")
-                        .setPositiveButton("ACCEPT", new DialogInterface.OnClickListener() {
+                String title = "Accept";
+                String message = "Are you sure to accept this request from " + request.name + "?";
+                String posbtn = "ACCEPT";
+                String negbtn = "CANCEL";
+                if (MainActivity.language.equals("Chinese")) {
+                    title = "接受";
+                    message = "确定接受来自" + request.name + "的好友请求吗？";
+                    posbtn = "确定";
+                    negbtn = "取消";
+                }
+                builder.setTitle(title)
+                        .setMessage(message)
+                        .setPositiveButton(posbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 requestRef.child(MainActivity.uid).child(request.uid).removeValue();
@@ -96,11 +111,13 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                                     }
                                 });
 
-
-                                Toast.makeText(context, "All your previous texts with " + request.name + " will be moved over to the 'CHATS' page.", Toast.LENGTH_LONG).show();
+                                String acceptmsg = "All your previous texts with " + request.name + " will be moved over to the 'CHATS' page.";
+                                if (MainActivity.language.equals("Chinese"))
+                                    acceptmsg = "您跟" + request.name + "的对话将会被移到 ‘好友对话’。";
+                                Toast.makeText(context, acceptmsg, Toast.LENGTH_LONG).show();
                             }
                         })
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(negbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
@@ -113,10 +130,22 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
         holder.btnDecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String title = "Decline";
+                String msg = "Are you sure to decline this request from " + request.name + "?\nThis action cannot be undone.";
+                String posbtn = "DECLINE";
+                String negbtn = "CANCEL";
+                if (MainActivity.language.equals("Chinese")) {
+                    title = "拒绝";
+                    msg = "确定拒绝来自" + request.name + "的好友请求吗？";
+                    posbtn = "确定";
+                    negbtn = "取消";
+                }
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Decline")
-                        .setMessage("Are you sure to decline this request from " + request.name + "?\nThis action cannot be undone.")
-                        .setPositiveButton("DECLINE", new DialogInterface.OnClickListener() {
+                builder.setTitle(title)
+                        .setMessage(msg)
+                        .setPositiveButton(posbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 requestRef.child(MainActivity.uid).child(request.uid).removeValue();
@@ -124,7 +153,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.RequestV
                                 notifyDataSetChanged();
                             }
                         })
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(negbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();

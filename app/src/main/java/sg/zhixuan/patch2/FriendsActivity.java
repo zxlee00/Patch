@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     RecyclerView rvFriends;
     DatabaseReference userRef;
+    TextView friends1, hometext;
     LinearLayout btnFriendsToHome;
     static List<User> friendsList = new ArrayList<User>();
     static FriendsAdapter friendsAdapter;
@@ -32,8 +34,12 @@ public class FriendsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
 
+        friends1 = (TextView)findViewById(R.id.friends1);
+        hometext = (TextView)findViewById(R.id.hometext2);
         rvFriends = (RecyclerView)findViewById(R.id.rvFriends);
         btnFriendsToHome = (LinearLayout)findViewById(R.id.btnFriendsToHome);
+
+        setChineseLanguage();
 
         userRef = FirebaseDatabase.getInstance().getReference().child("users");
         userRef.addValueEventListener(new ValueEventListener() {
@@ -78,5 +84,12 @@ public class FriendsActivity extends AppCompatActivity {
 
     public static void refreshList() {
         friendsAdapter.changeList(friendsList);
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            hometext.setText("主页");
+            friends1.setText("好友列表");
+        }
     }
 }

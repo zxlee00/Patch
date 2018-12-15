@@ -19,6 +19,7 @@
         android:textSize="36sp"
         android:fontFamily="@font/titillium"
         android:textColor="#9e6759"
+        android:id="@+id/signuptext4"
         android:layout_weight=".5"
         android:gravity="center"/>
 
@@ -36,6 +37,7 @@
             android:text="Profile Picture"
             android:textAlignment="center"
             android:textSize="25sp"
+            android:id="@+id/profilepic"
             android:fontFamily="@font/titillium"
             android:textColor="#203f58"/>
 
@@ -54,6 +56,7 @@
             android:textAlignment="center"
             android:autoSizeTextType="uniform"
             android:text="Select the icon to upload an image"
+            android:id="@+id/txtprofilepicprompt"
             android:layout_marginBottom="20dp"
             android:fontFamily="@font/titillium"
             android:textColor="#203f58"/>

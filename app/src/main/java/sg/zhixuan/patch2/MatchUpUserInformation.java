@@ -18,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 public class MatchUpUserInformation extends AppCompatActivity {
 
     static String selectedUID;
-    TextView txtMatchUpUserInfoName, txtMatchUpUserInfoAge, txtMatchUpUserInfoGender, txtMatchUpUserInfoRating, txtMatchUpUserInfoHobby;
+    TextView txtMatchUpUserInfoName, txtMatchUpUserInfoAge, txtMatchUpUserInfoGender, txtMatchUpUserInfoRating, txtMatchUpUserInfoHobby, matchupuserinformation;
     Button btnMatchUpUserFeedback, btnMatchUpUserViewFeedback, btnMatchUpUserInfoToMatchUpConversation;
     DatabaseReference userRef, ratingRef;
     User selectedUser;
@@ -33,10 +33,13 @@ public class MatchUpUserInformation extends AppCompatActivity {
         txtMatchUpUserInfoGender = (TextView)findViewById(R.id.txtMatchedUpUserInfoGender);
         txtMatchUpUserInfoAge = (TextView)findViewById(R.id.txtMatchedUpUserInfoAge);
         txtMatchUpUserInfoRating = (TextView)findViewById(R.id.txtMatchedUpUserInfoRating);
+        matchupuserinformation = (TextView)findViewById(R.id.matchupuserinformation);
 
         btnMatchUpUserFeedback = (Button)findViewById(R.id.btnMatchUpUserFeedback);
         btnMatchUpUserInfoToMatchUpConversation = (Button)findViewById(R.id.btnMatchupUserInfoToMatchUpConversation);
         btnMatchUpUserViewFeedback = (Button)findViewById(R.id.btnMatchUpUserViewFeedback);
+
+        setChineseLanguage();
 
         userRef = FirebaseDatabase.getInstance().getReference().child("users");
         userRef.addValueEventListener(new ValueEventListener() {
@@ -47,16 +50,32 @@ public class MatchUpUserInformation extends AppCompatActivity {
                 selectedUser = dataSnapshot.child(selectedUID).getValue(User.class);
 
                 txtMatchUpUserInfoName.setText(selectedUser.name);
-                txtMatchUpUserInfoAge.setText("AGE: " + Integer.toString(selectedUser.age));
-                txtMatchUpUserInfoGender.setText("GENDER: " + selectedUser.gender);
-                txtMatchUpUserInfoHobby.setText("HOBBIES:\n" + selectedUser.hobby);
+
+                String age = "AGE: ";
+                String gender = "GENDER: ";
+                String hobbies = "HOBBIES:\n";
+
+                if (MainActivity.language.equals("Chinese")) {
+                    age = "年龄：";
+                    gender = "性别：";
+                    hobbies = "爱好：";
+                }
+
+                txtMatchUpUserInfoAge.setText(age + Integer.toString(selectedUser.age));
+                txtMatchUpUserInfoGender.setText(gender + selectedUser.gender);
+                txtMatchUpUserInfoHobby.setText(hobbies + selectedUser.hobby);
 
                 ratingRef = FirebaseDatabase.getInstance().getReference().child("ratingfeedback").child(selectedUID).child("rating");
                 ratingRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String rating = "RATING: ";
+                        if (MainActivity.language.equals("Chinese")) {
+                            rating = "评分：";
+                        }
+
                         txtMatchUpUserInfoRating.setText("");
-                        txtMatchUpUserInfoRating.setText("RATING: " + dataSnapshot.getValue(String.class));
+                        txtMatchUpUserInfoRating.setText(rating + dataSnapshot.getValue(String.class));
                     }
 
                     @Override
@@ -94,5 +113,13 @@ public class MatchUpUserInformation extends AppCompatActivity {
                 startActivity(new Intent(MatchUpUserInformation.this, NewFeedbackActivity.class));
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            matchupuserinformation.setText("配对用户个人资料");
+            btnMatchUpUserViewFeedback.setText("查看反馈");
+            btnMatchUpUserFeedback.setText("反馈");
+        }
     }
 }

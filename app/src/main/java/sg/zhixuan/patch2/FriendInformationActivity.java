@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class FriendInformationActivity extends AppCompatActivity {
 
-    TextView friendname, friendgender, friendage, friendhobby, friendrating;
+    TextView friendname, friendgender, friendage, friendhobby, friendrating, friends;
     Button btnFeedback, btnBlock, btnDeleteFriend, btnViewFeedbacks, btnFriendInfoToFriend;
     ImageView friendimg;
     static String name, gender, age, hobby = "", imgurl;
@@ -44,12 +44,15 @@ public class FriendInformationActivity extends AppCompatActivity {
         friendhobby = (TextView)findViewById(R.id.friendhobby);
         friendname = (TextView)findViewById(R.id.friendname);
         friendimg = (ImageView)findViewById(R.id.friendimg);
+        friends = (TextView)findViewById(R.id.friends);
         btnBlock = (Button)findViewById(R.id.btnBlock);
         btnFeedback = (Button)findViewById(R.id.btnFeedback);
         btnDeleteFriend = (Button)findViewById(R.id.btnDeleteFriend);
         btnViewFeedbacks = (Button)findViewById(R.id.btnViewFeedbacks);
         btnFriendInfoToFriend = (Button)findViewById(R.id.btnFriendInfoToFriend);
         friendrating = (TextView)findViewById(R.id.friendrating);
+
+        setChineseLanguage();
 
         contactRef = FirebaseDatabase.getInstance().getReference().child("contacts");
         blacklistRef = FirebaseDatabase.getInstance().getReference().child("blacklist");
@@ -59,7 +62,10 @@ public class FriendInformationActivity extends AppCompatActivity {
         friendgender.append(gender);
         friendname.setText(name);
         friendage.append(age);
-        friendhobby.setText("Hobby:" + hobby);
+        String hobbystr = "Hobby:";
+        if (MainActivity.language.equals("Chinese"))
+            hobbystr = "兴趣/爱好：";
+        friendhobby.setText(hobbystr + hobby);
 
         Glide.with(this)
                 .load(imgurl)
@@ -92,15 +98,28 @@ public class FriendInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(FriendInformationActivity.this);
-                alertDialog.setTitle("Delete Friend")
-                        .setMessage("Are you sure you want to delete this friend?\nYou will not be able to contact him/her anymore.")
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+
+                String title = "Delete Friend";
+                String message = "Are you sure you want to delete this friend?\nYou will not be able to contact him/her anymore.";
+                String negbtn = "CANCEL";
+                String posbtn = "CONFIRM";
+
+                if (MainActivity.language.equals("Chinese")) {
+                    title = "删除好友";
+                    message = "确定删除这位好友吗？\n请注意，如果确定的话，您将无法与这位用户联系了。";
+                    negbtn = "取消";
+                    posbtn = "确定";
+                }
+
+                alertDialog.setTitle(title)
+                        .setMessage(message)
+                        .setNegativeButton(negbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
                         })
-                        .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(posbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 contactRef.child(MainActivity.uid).child(selectedFriend.uid).removeValue();
@@ -162,16 +181,30 @@ public class FriendInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(FriendInformationActivity.this);
-                alertDialog.setTitle("Block User")
-                        .setMessage("Are you sure you want to block this user?\n\nOnce blocked, you will not be able to match up with this user in the future and" +
-                                " he/she will be removed from your friend list.\n\nAlso, you will not be able to make appointments with this user or chat with him/her anymore.")
-                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+
+                String title = "Block User";
+                String message = "Are you sure you want to block this user?\n\nOnce blocked, you will not be able to match up with this user in the future and" +
+                        " he/she will be removed from your friend list.\n\nAlso, you will not be able to make appointments with this user or chat with him/her anymore.";
+                String negbtn = "CANCEL";
+                String posbtn = "CONFIRM";
+
+                if(MainActivity.language.equals("Chinese")) {
+                    title = "拉黑用户";
+                    message = "您确定拉黑这位用户吗？\n\n一旦拉黑了，您将无法与这用户配对了。" +
+                            "他/她将会从您的好友列表中除去。\n\n此外，您再也不能跟他/她预约或对话了。";
+                    negbtn = "取消";
+                    posbtn = "确定";
+                }
+
+                alertDialog.setTitle(title)
+                        .setMessage(message)
+                        .setNegativeButton(negbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
                             }
                         })
-                        .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(posbtn, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 blacklistRef.child(MainActivity.uid).child(selectedFriend.uid).setValue("");
@@ -214,5 +247,18 @@ public class FriendInformationActivity extends AppCompatActivity {
                         .show();
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            friendgender.setText("性别：");
+            friendage.setText("年龄：");
+            friendrating.setText("评分：");
+            friends.setText("好友个人资料");
+            btnBlock.setText("拉黑");
+            btnDeleteFriend.setText("删除好友");
+            btnViewFeedbacks.setText("查看反馈");
+            btnFeedback.setText("反馈");
+        }
     }
 }

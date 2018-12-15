@@ -26,7 +26,7 @@ import java.math.BigDecimal;
 public class NewFeedbackActivity extends AppCompatActivity {
 
     SeekBar ratingSeekBar;
-    TextView txtReportUserName, txtSeekbarValue, txtFeedback;
+    TextView txtReportUserName, txtSeekbarValue, txtFeedback, feedback, userRating, feedbackprompt;
     static User feedbackUser;
     Button btnSubmitReport, btnNewFeedbackToFriendsActivity;
     DatabaseReference ratingRef;
@@ -45,8 +45,13 @@ public class NewFeedbackActivity extends AppCompatActivity {
         btnSubmitReport = (Button)findViewById(R.id.btnSubmitReport);
         ratingRef = FirebaseDatabase.getInstance().getReference().child("ratingfeedback");
         btnNewFeedbackToFriendsActivity = (Button)findViewById(R.id.btnNewFeedbackToFriendsActivity);
+        feedback = (TextView)findViewById(R.id.feedback);
+        userRating = (TextView)findViewById(R.id.userRating) ;
+        feedbackprompt = (TextView)findViewById(R.id.feedbackprompt);
 
         txtReportUserName.setText(feedbackUser.name);
+
+        setChineseLanguage();
 
         ratingSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -68,7 +73,13 @@ public class NewFeedbackActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(txtFeedback.getText())) {
-                    txtFeedback.setError("Please enter a feedback on this user.");
+
+                    String error = "Please enter a feedback on this user.";
+                    if (MainActivity.language.equals("Chinese")) {
+                        error = "请输入有关此用户的反馈。";
+                    }
+
+                    txtFeedback.setError(error);
                 } else {
                     ratingRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -102,5 +113,14 @@ public class NewFeedbackActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            feedbackprompt.setText("您对此用户有什么反馈呢？");
+            feedback.setText("反馈");
+            userRating.setText("评分");
+            btnSubmitReport.setText("提交");
+        }
     }
 }

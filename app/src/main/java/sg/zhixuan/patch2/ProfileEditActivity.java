@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -51,6 +52,7 @@ public class ProfileEditActivity extends AppCompatActivity {
     EditText etName;
     Spinner spnAge;
     String hobby, userHobby;
+    TextView tvName, tvAge, tvHobbies, txtEditProfile;
     List<String> hobbies;
     String[] userHobbies;
     Button btnDone;
@@ -73,6 +75,12 @@ public class ProfileEditActivity extends AppCompatActivity {
         etName = (EditText) findViewById(R.id.etName);
         spnAge = (Spinner) findViewById(R.id.spnAge);
         ivProfile = (ImageView) findViewById(R.id.ivProfile);
+        tvName = (TextView)findViewById(R.id.tvName);
+        tvAge = (TextView)findViewById(R.id.tvAge);
+        tvHobbies = (TextView)findViewById(R.id.tvHobbies);
+        txtEditProfile = (TextView)findViewById(R.id.txtEditProfile);
+
+        setChineseLanguage();
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -155,9 +163,16 @@ public class ProfileEditActivity extends AppCompatActivity {
                 if (checkPermission()) { //permission is allowed
                     showPictureDialog();
                 } else if (!checkPermission()){ //permission is revoked by user
+                    String message = "Please allow access to camera and storage to add profile picture.";
+                    String neutralbtn = "Back";
+                    if (MainActivity.language.equals("Chinese")) {
+                        message = "请准许使用相机和存储的权限";
+                        neutralbtn = "关闭";
+                    }
+
                     new AlertDialog.Builder(v.getContext())
-                            .setMessage("Please allow access to camera and storage to add profile picture.")
-                            .setNeutralButton("Back",
+                            .setMessage(message)
+                            .setNeutralButton(neutralbtn,
                                     new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -176,7 +191,10 @@ public class ProfileEditActivity extends AppCompatActivity {
                         name.matches("^[a-zA-Z\\s]*$")) {
                     MainAccountActivity.user.setName(name);
                 } else {
-                    etName.setError("Enter a valid name.");
+                    String error = "Enter a valid name.";
+                    if (MainActivity.language.equals("Chinese"))
+                        error = "请您输入一个有效的姓名 （只接受英文字母）。";
+                    etName.setError(error);
                     etName.requestFocus();
                     return;
                 }
@@ -232,10 +250,20 @@ public class ProfileEditActivity extends AppCompatActivity {
     //dialog to prompt user to choose method of getting image
     private void showPictureDialog() {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-        pictureDialog.setTitle("Select Action");
+        String title = "Select Action";
+        String item1 = "Select from gallery";
+        String item2 = "Capture from camera";
+
+        if (MainActivity.language.equals("Chinese")) {
+            title = "选项";
+            item1 = "从照片库选择头像";
+            item2 = "从相机捕捉头像";
+        }
+
+        pictureDialog.setTitle(title);
         String[] pictureDialogItems = {
-                "Select from gallery",
-                "Capture from camera"
+                item1,
+                item2
         };
         pictureDialog.setItems(pictureDialogItems,
                 new DialogInterface.OnClickListener() {
@@ -313,6 +341,16 @@ public class ProfileEditActivity extends AppCompatActivity {
                             Log.d(TAG, "onFailure: failure " + e.getMessage());
                         }
                     });
+        }
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            tvName.setText("姓名：");
+            txtEditProfile.setText("编辑个人资料");
+            tvAge.setText("年龄：");
+            tvHobbies.setText("兴趣/爱好：");
+            btnDone.setText("完成");
         }
     }
 }

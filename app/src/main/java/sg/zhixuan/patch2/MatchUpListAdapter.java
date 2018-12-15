@@ -63,25 +63,47 @@ public class MatchUpListAdapter extends RecyclerView.Adapter<MatchUpListAdapter.
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                CharSequence options[] = new CharSequence[]{"Delete", "User Details"};
+                String item1 = "Delete";
+                String item2 = "User Details";
+                String optionstr = "Options";
+
+                if (MainActivity.language.equals("Chinese")) {
+                    item1 = "删除配对";
+                    item2 = "用户个人资料";
+                    optionstr = "选项";
+                }
+
+                CharSequence options[] = new CharSequence[]{item1, item2};
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-                builder.setTitle("Options")
+                builder.setTitle(optionstr)
                     .setItems(options, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (which == 0) {
+                                String delete = "Delete";
+                                String message = "Would you like to delete this match up?\nNote that you will not be able to contact this user anymore if you accept.";
+                                String cancel = "CANCEL";
+                                String confirm = "CONFIRM";
+
+                                if (MainActivity.language.equals("Chinese")) {
+                                    delete = "删除配对";
+                                    message = "确定删除配对吗？请注意，如果确定的话，您将无法与这位用户再联系了。";
+                                    cancel = "取消";
+                                    confirm = "确定";
+                                }
+
                                 AlertDialog.Builder deleteDialog = new AlertDialog.Builder(context);
-                                deleteDialog.setTitle("Delete")
-                                        .setMessage("Would you like to delete this match up?\nNote that you will not be able to contact this user anymore if you accept.")
-                                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                                deleteDialog.setTitle(delete)
+                                        .setMessage(message)
+                                        .setNegativeButton(cancel, new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 dialog.cancel();
                                             }
                                         })
-                                        .setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                                        .setPositiveButton(confirm, new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 matchupRef.child("messages").child(MainActivity.uid + "_" + matchedUpUserList.get(position).uid).removeValue();

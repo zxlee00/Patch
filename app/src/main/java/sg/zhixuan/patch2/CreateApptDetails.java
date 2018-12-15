@@ -38,7 +38,8 @@ public class CreateApptDetails extends AppCompatActivity {
     Button newApptDatePicker, newApptTimePicker, btnCompleteAppt, btnApptDetailsToApptActivity;
     int year, month, day;
     int hourOfDay, minute;
-    TextView dateTextView, timeTextView, txtNewApptName, txtNewApptLocation, txtNewApptParty;
+    TextView createappttext, dateTextView, timeTextView, txtNewApptName, txtNewApptLocation, txtNewApptParty;
+    TextView apptname, apptdatetime, apptLocation;
     DatePickerDialog.OnDateSetListener mDateSetListener;
     TimePickerDialog.OnTimeSetListener mTimeSetListener;
 
@@ -75,8 +76,14 @@ public class CreateApptDetails extends AppCompatActivity {
         txtNewApptName = (TextView)findViewById(R.id.txtNewApptName);
         newApptDatePicker = (Button)findViewById(R.id.newApptDatePicker);
         newApptTimePicker = (Button)findViewById(R.id.newApptTimePicker);
+        apptname = (TextView)findViewById(R.id.apptname);
+        apptdatetime = (TextView)findViewById(R.id.apptdatetime);
+        apptLocation = (TextView)findViewById(R.id.apptLocation);
         btnCompleteAppt = (Button)findViewById(R.id.btnCompleteAppt);
+        createappttext = (TextView)findViewById(R.id.createappt);
         imgPartyPic = (ImageView)findViewById(R.id.imgPartyPic);
+
+        setChineseLanguage();
 
         //Getting selected party id and imageURL
         apptPartyIDSelected = UserContactAdapter.apptPartyIDSelected;
@@ -167,13 +174,23 @@ public class CreateApptDetails extends AppCompatActivity {
         btnCompleteAppt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String error1 = "Please enter the appointment name!";
+                String error2 = "Please select a time!";
+                String error3 = "Please enter a location!";
+
+                if (MainActivity.language.equals("Chinese")) {
+                    error1 = "请输入预约名称！";
+                    error2 = "请选择时间！";
+                    error3 = "请输入预约地点！";
+                }
+
                 if (TextUtils.isEmpty(txtNewApptName.getText().toString()))
-                    txtNewApptName.setError("Please enter the appointment name!");
-                else if (timeTextView.getText().toString().matches("")) {
-                    timeTextView.setText("Please select a time!");
+                    txtNewApptName.setError(error1);
+                else if (timeTextView.getText().toString().matches("") || timeTextView.getText().toString().matches(error2)) {
+                    timeTextView.setText(error2);
                 }
                 else if (TextUtils.isEmpty(txtNewApptLocation.getText().toString()))
-                    txtNewApptLocation.setError("Please enter a location!");
+                    txtNewApptLocation.setError(error3);
                 else {
                     checkLastAlarmCode();
                     writeNewAppt(txtNewApptParty.getText().toString(), txtNewApptName.getText().toString(), dateTextView.getText().toString(), timeTextView.getText().toString(), txtNewApptLocation.getText().toString());
@@ -233,5 +250,17 @@ public class CreateApptDetails extends AppCompatActivity {
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, lastAlarmCode + 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+    }
+
+    private void setChineseLanguage() {
+        if(MainActivity.language.equals("Chinese")) {
+            createappttext.setText("创造预约");
+            apptname.setText("预约名称");
+            apptdatetime.setText("日期 & 时间");
+            apptLocation.setText("地点");
+            newApptDatePicker.setText("日期");
+            newApptTimePicker.setText("时间");
+            btnCompleteAppt.setText("完成");
+        }
     }
 }

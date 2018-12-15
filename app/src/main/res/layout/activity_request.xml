@@ -19,7 +19,7 @@
         android:background="@drawable/bottomborder"
         android:fontFamily="@font/titillium"
         android:autoSizeTextType="uniform"
-        android:id="@+id/txtMatchupUser"
+        android:id="@+id/requests"
         android:textStyle="bold"
         android:gravity="center"/>
 

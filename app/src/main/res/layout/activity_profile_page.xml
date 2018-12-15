@@ -14,14 +14,14 @@
         android:text="PROFILE"
         android:gravity="center"
         android:textColor="#5e2a40"
-        android:id="@+id/txtProfile"
+        android:id="@+id/profiletext"
         android:fontFamily="@font/titillium"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="#000000"
-        android:layout_below="@+id/txtProfile"
+        android:layout_below="@+id/profiletext"
         android:id="@+id/line"/>
 
     <ScrollView
@@ -49,6 +49,7 @@
                 android:padding="10dp"
                 android:text="Scroll down to view more"
                 android:fontFamily="@font/titillium"
+                android:id="@+id/scrolldownprompt"
                 android:textColor="#203f58"
                 android:textSize="25sp"
                 android:gravity="center"/>
@@ -148,6 +149,7 @@
             android:autoSizeTextType="uniform"
             android:textStyle="bold"
             android:gravity="center"
+            android:id="@+id/hometext1"
             android:fontFamily="@font/titillium"/>
 
     </LinearLayout>

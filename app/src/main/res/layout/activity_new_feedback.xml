@@ -95,6 +95,7 @@
                         android:text="RATING"
                         android:fontFamily="@font/titillium"
                         android:autoSizeTextType="uniform"
+                        android:id="@+id/userRating"
                         android:textColor="#203f58"
                         android:gravity="center"/>
 
@@ -130,6 +131,7 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:gravity="center"
+                    android:id="@+id/feedbackprompt"
                     android:textColor="#203f58"/>
 
                 <EditText

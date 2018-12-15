@@ -7,6 +7,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,14 +24,18 @@ public class RequestActivity extends AppCompatActivity {
     RequestAdapter requestAdapter;
     List<Request> requestList;
     DatabaseReference requestRef;
+    TextView requests;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
+        requests = (TextView)findViewById(R.id.requests);
         rvRequests = (RecyclerView)findViewById(R.id.rvRequests);
         requestList = new ArrayList<Request>();
+
+        setChineseLanguage();
 
         requestRef = FirebaseDatabase.getInstance().getReference().child("requests").child(MainActivity.uid);
         requestRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -68,5 +73,11 @@ public class RequestActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            requests.setText("好友请求");
+        }
     }
 }

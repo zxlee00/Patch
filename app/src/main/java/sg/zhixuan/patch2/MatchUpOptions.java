@@ -28,6 +28,8 @@ public class MatchUpOptions extends AppCompatActivity {
         matchuptext = (TextView)findViewById(R.id.matchuptext);
         conversationtext = (TextView)findViewById(R.id.conversationtext);
 
+        setChineseLanguage();
+
         btnNewMatchUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,4 +82,10 @@ public class MatchUpOptions extends AppCompatActivity {
         return false;
     }
 
+    private void setChineseLanguage() {
+        if (MainActivity.language.equals("Chinese")) {
+            matchuptext.setText("新配对");
+            conversationtext.setText("对话");
+        }
+    }
 }

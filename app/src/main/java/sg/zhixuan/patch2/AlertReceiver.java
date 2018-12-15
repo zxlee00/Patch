@@ -16,6 +16,11 @@ public class AlertReceiver extends BroadcastReceiver {
         title = "Appointment Scheduled";
         message = "You have an appointment scheduled within two hours. Please remember to check your appointment.";
 
+        if (MainActivity.language.equals("Chinese")) {
+            title = "预约";
+            message = "您在两个钟头内有预约，请记得查看您的预约。";
+        }
+
         NotificationHelper notificationHelper = new NotificationHelper(context);
         NotificationCompat.Builder builder = notificationHelper.getChannelNotification(title, message);
         notificationHelper.getManager().notify(1, builder.build());

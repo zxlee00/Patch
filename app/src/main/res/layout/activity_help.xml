@@ -30,6 +30,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="85"
                 android:text="Help Guide"
+                android:id="@+id/helpguide"
                 android:textColor="#FFFFFF"
                 android:gravity="center_vertical"
                 android:autoSizeTextType="uniform"

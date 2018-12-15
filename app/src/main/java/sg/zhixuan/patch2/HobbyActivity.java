@@ -11,9 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ public class HobbyActivity extends AppCompatActivity {
     GridView gvHobby;
     String hobby;
     List<String> hobbies;
+    TextView signup, signuphobby;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +42,10 @@ public class HobbyActivity extends AppCompatActivity {
         btnBack = (Button) findViewById(R.id.btnBack);
         btnComplete = (Button) findViewById(R.id.btnComplete);
         gvHobby = (GridView) findViewById(R.id.gvHobby);
+        signup = (TextView)findViewById(R.id.signup);
+        signuphobby = (TextView)findViewById(R.id.signuphobby);
+
+        setChineseLanguage();
 
         hobbies = new ArrayList<>();
         hobby = "";
@@ -100,5 +108,12 @@ public class HobbyActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void setChineseLanguage() {
+        signup.setText("注册");
+        signuphobby.setText("请选择你的兴趣/爱好（可以选择多过一个）：");
+        btnBack.setText("上一步");
+        btnComplete.setText("完成");
     }
 }
