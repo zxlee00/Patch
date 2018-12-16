@@ -258,9 +258,11 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void setChineseLanguage() {
-        txtprofilepicprompt.setText("按图标即可选择想上传的头像");
-        signuptext4.setText("注册");
-        profilepic.setText("头像");
-        btnNext.setText("下一步");
+        if (MainActivity.language.equals("Chinese")) {
+            txtprofilepicprompt.setText("按图标即可选择想上传的头像");
+            signuptext4.setText("注册");
+            profilepic.setText("头像");
+            btnNext.setText("下一步");
+        }
     }
 }

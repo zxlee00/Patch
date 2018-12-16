@@ -5,17 +5,136 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@mipmap/ic_launcher"
-        android:id="@+id/img"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/img"
-        android:id="@+id/textview"
-        android:text="LANGUAGE TAB"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_language_1"
+                android:layout_marginTop="20dp"
+                android:id="@+id/imghelplanguage1"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelplanguage1"
+                android:id="@+id/txthelplanguage1"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="LANGUAGE TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_language_2"
+                android:layout_below="@id/txthelplanguage1"
+                android:id="@+id/imghelplanguage2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelplanguage2"
+                android:id="@+id/txthelplanguage2"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="LANGUAGE TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:src="@drawable/help_language_3"
+                android:layout_below="@id/txthelplanguage2"
+                android:id="@+id/imghelplanguage3"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelplanguage3"
+                android:id="@+id/txthelplanguage3"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="MATCH UP TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_language_4"
+                android:layout_below="@id/txthelplanguage3"
+                android:id="@+id/imghelplanguage4"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelplanguage4"
+                android:id="@+id/txthelplanguage4"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="MATCH UP TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_language_5"
+                android:layout_below="@id/txthelplanguage4"
+                android:id="@+id/imghelplanguage5"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelplanguage5"
+                android:id="@+id/txthelplanguage5"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="MATCH UP TAB"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:src="@drawable/help_language_6"
+                android:layout_below="@id/txthelplanguage5"
+                android:id="@+id/imghelplanguage6"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imghelplanguage6"
+                android:id="@+id/txthelplanguage6"
+                android:fontFamily="@font/arimo"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:text="MATCH UP TAB"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

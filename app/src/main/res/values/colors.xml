@@ -14,5 +14,6 @@
 
     <color name="help_tab_color">#2f6572</color>
     <color name="tab">#357180</color>
+    <color name="tabpressed">#386773</color>
 
 </resources>

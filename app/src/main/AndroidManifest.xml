@@ -112,7 +112,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".MatchUpUserInformation" />
-        <activity android:name=".LanguageActivity"></activity>
+        <activity android:name=".LanguageActivity" />
+        <activity android:name=".OnBoardingLanguageActivity"></activity>
     </application>
 
 </manifest>

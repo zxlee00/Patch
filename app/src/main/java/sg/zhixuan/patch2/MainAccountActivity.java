@@ -40,7 +40,7 @@ public class MainAccountActivity extends AppCompatActivity {
         checkLastSetLanguage();
         checkFirstTimeUse();
         if (isFirstTimeUser == true) {
-            Intent intent = new Intent(this, PatchOnBoardingActivity.class);
+            Intent intent = new Intent(this, OnBoardingLanguageActivity.class);
             startActivity(intent);
 
             setNotFirstTimeUser();

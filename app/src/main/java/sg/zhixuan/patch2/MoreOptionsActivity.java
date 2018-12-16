@@ -1,5 +1,6 @@
 package sg.zhixuan.patch2;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,6 +21,7 @@ public class MoreOptionsActivity extends AppCompatActivity {
     LinearLayout btnSignOut, btnFriends, btnHelp, btnLanguage;
     TextView txtSignOut, txtFriends, txtHelp, txtLanguage, txtMore;
     ImageView imgSignOut, imgFriends, imgHelp, imgLanguage;
+    ProgressDialog progressdialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,11 @@ public class MoreOptionsActivity extends AppCompatActivity {
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String loadingtext = "Loading, please wait...";
+                if (MainActivity.language.equals("Chinese")) {
+                    loadingtext = "加载中，请稍等。。。";
+                }
+                progressdialog = ProgressDialog.show(MoreOptionsActivity.this, "", loadingtext, true);
                 startActivity(new Intent(MoreOptionsActivity.this, HelpActivity.class));
             }
         });
@@ -170,6 +177,10 @@ public class MoreOptionsActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        if(progressdialog != null && progressdialog.isShowing())
+        {
+            progressdialog.dismiss();
+        }
     }
 
     public void setChineseLanguage() {

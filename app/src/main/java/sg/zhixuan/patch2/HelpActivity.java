@@ -9,15 +9,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class HelpActivity extends AppCompatActivity {
 
     ImageView btnOpenOnboarding;
+    TextView helpguide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +31,18 @@ public class HelpActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.help_tab_color));
         }
 
+        helpguide = (TextView)findViewById(R.id.helpguide);
         btnOpenOnboarding = (ImageView)findViewById(R.id.btnOpenOnboarding);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Help Guide");
+        String toolbartext = "";
+        if (MainActivity.language.equals("Chinese")) {
+            toolbartext = "用户使用手册";
+        } else {
+            toolbartext = "Help Guide";
+        }
+        toolbar.setTitle(toolbartext);
+        helpguide.setText(toolbartext);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -44,21 +55,55 @@ public class HelpActivity extends AppCompatActivity {
             }
         });
 
+        btnOpenOnboarding.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        btnOpenOnboarding.setBackgroundColor(getResources().getColor(R.color.tabpressed));
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        btnOpenOnboarding.setBackgroundColor(getResources().getColor(R.color.tab));
+                        break;
+                }
+                return false;
+            }
+        });
+
         btnOpenOnboarding.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PatchOnBoardingActivity.onboardinglanguage = MainActivity.language;
                 startActivity(new Intent(HelpActivity.this, PatchOnBoardingActivity.class));
             }
         });
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Match-Up"));
-        tabLayout.addTab(tabLayout.newTab().setText("Chats"));
-        tabLayout.addTab(tabLayout.newTab().setText("Appointments"));
-        tabLayout.addTab(tabLayout.newTab().setText("Profile"));
-        tabLayout.addTab(tabLayout.newTab().setText("Language"));
-        tabLayout.addTab(tabLayout.newTab().setText("Friends"));
-        tabLayout.addTab(tabLayout.newTab().setText("Requests"));
+        String tabmatchup = "Match-Up";
+        String tabchats = "Chats";
+        String tabappts = "Appointments";
+        String tabprofile = "Profile";
+        String tablanguage = "Language";
+        String tabfriends = "Friends";
+        String tabrequests = "Requests";
+
+        if (MainActivity.language.equals("Chinese")) {
+            tabmatchup = "配对";
+            tabchats = "好友对话";
+            tabappts = "预约";
+            tabprofile = "个人资料";
+            tablanguage = "语言";
+            tabfriends = "好友";
+            tabrequests = "好友请求";
+        }
+
+        tabLayout.addTab(tabLayout.newTab().setText(tabmatchup));
+        tabLayout.addTab(tabLayout.newTab().setText(tabchats));
+        tabLayout.addTab(tabLayout.newTab().setText(tabappts));
+        tabLayout.addTab(tabLayout.newTab().setText(tabprofile));
+        tabLayout.addTab(tabLayout.newTab().setText(tablanguage));
+        tabLayout.addTab(tabLayout.newTab().setText(tabfriends));
+        tabLayout.addTab(tabLayout.newTab().setText(tabrequests));
         tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#bddce4"));
         tabLayout.setTabTextColors(Color.parseColor("#FFFFFF"), Color.parseColor("#bddce4"));
 

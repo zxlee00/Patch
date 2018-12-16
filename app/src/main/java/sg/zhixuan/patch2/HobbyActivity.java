@@ -111,9 +111,11 @@ public class HobbyActivity extends AppCompatActivity {
     }
 
     private void setChineseLanguage() {
-        signup.setText("注册");
-        signuphobby.setText("请选择你的兴趣/爱好（可以选择多过一个）：");
-        btnBack.setText("上一步");
-        btnComplete.setText("完成");
+        if (MainActivity.language.equals("Chinese")) {
+            signup.setText("注册");
+            signuphobby.setText("请选择你的兴趣/爱好（可以选择多过一个）：");
+            btnBack.setText("上一步");
+            btnComplete.setText("完成");
+        }
     }
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:padding="50dp"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="#f0dfbb"
+    tools:context=".OnBoardingLanguageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_weight="100"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="60"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/titillium"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="#203f58"
+            android:text="We will be giving you a short introduction to Patch. What language do you want the introduction to be in?\n\n我们将介绍 Patch 给您。请问您希望介绍能以什么语言呈现呢？"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="100"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_weight="40">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="50"
+                android:text="ENGLISH / 英文"
+                android:layout_marginTop="20dp"
+                android:textColor="#203f58"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:autoSizeTextType="uniform"
+                android:fontFamily="@font/titillium"
+                android:background="@drawable/buttonstyle"
+                android:id="@+id/btnOnBoardingEnglish"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="50"
+                android:layout_marginTop="20dp"
+                android:id="@+id/btnOnBoardingChinese"
+                android:text="CHINESE / 中文"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textColor="#203f58"
+                android:autoSizeTextType="uniform"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/titillium"
+                android:background="@drawable/buttonstyle"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
