@@ -55,7 +55,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="350dp"
                 android:src="@drawable/help_language_3"
                 android:layout_below="@id/txthelplanguage2"
                 android:id="@+id/imghelplanguage3"/>
