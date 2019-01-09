@@ -57,15 +57,27 @@ public class MainAccountActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                     alertDialog = new AlertDialog.Builder(MainAccountActivity.this);
-                    alertDialog.setTitle("Sign Out")
-                            .setMessage("You are currently logged in to another account. If you want to proceed on with sign up, you will be logged out of your current account. Are you sure?")
-                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    String text1 = "Sign Out";
+                    String text2 = "You are currently logged in to another account. If you want to proceed on with sign up, you will be logged out of your current account. Are you sure?";
+                    String text3 = "Cancel";
+                    String text4 = "Confirm";
+
+                    if (MainActivity.language.equals("Chinese")) {
+                        text1 = "退出账户";
+                        text2 = "您目前已经在 Patch 登录了。如果您想注册新的账户，您将会被退出目前登录的账户。确定要注册新的账户吗？";
+                        text3 = "取消";
+                        text4 = "确定";
+                    }
+
+                    alertDialog.setTitle(text1)
+                            .setMessage(text2)
+                            .setNegativeButton(text3, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.cancel();
                                 }
                             })
-                            .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                            .setPositiveButton(text4, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     FirebaseAuth.getInstance().signOut();
