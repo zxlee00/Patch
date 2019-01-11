@@ -32,6 +32,8 @@ public class Chat extends AppCompatActivity {
     ScrollView scrollView;
     Firebase reference1, reference2;
     SimpleDateFormat sdf;
+    TextView chatsfriendsname;
+    static String friendname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +44,19 @@ public class Chat extends AppCompatActivity {
 
         sdf = new SimpleDateFormat("EEE, MMM d 'AT' HH:mm a");
 
+        chatsfriendsname = (TextView)findViewById(R.id.chatsfriendname);
         layout = (LinearLayout) findViewById(R.id.layout1);
         layout_2 = (RelativeLayout)findViewById(R.id.layout2);
         sendButton = (ImageView)findViewById(R.id.sendButton);
         messageArea = (EditText)findViewById(R.id.messageArea);
         scrollView = (ScrollView)findViewById(R.id.scrollView);
         scrollView.fullScroll(View.FOCUS_DOWN);
+
+        chatsfriendsname.setText(friendname);
+
+        if (MainActivity.language.equals("Chinese")) {
+            messageArea.setHint("输入信息。。。");
+        }
 
         Firebase.setAndroidContext(this);
         reference1 = new Firebase("https://patchtesting2-3eb1a.firebaseio.com/messages/" + UserDetails.uid + "_" + UserDetails.chatWith);
@@ -117,10 +126,11 @@ public class Chat extends AppCompatActivity {
         TextView texttime = new TextView(Chat.this);
 
         textname.setText(name);
-        textname.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
+        textname.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
         textmsg.setText(message);
+        textmsg.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
         texttime.setText(time);
-        texttime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
+        texttime.setTextSize(TypedValue.COMPLEX_UNIT_SP, 17);
 
         LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

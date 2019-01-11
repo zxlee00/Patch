@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#f0dfbb"
     tools:context="sg.zhixuan.patch2.Users"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="FRIENDS"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:fontFamily="@font/titillium"
+        android:textColor="#5e2a40"
+        android:autoSizeTextType="uniform"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#000000"
+        android:layout_below="@+id/textView"
+        android:id="@+id/line"></View>
+
+    <TextView
+        android:id="@+id/noUsersText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No users found!"
-        android:id="@+id/noUsersText"/>
+        android:fontFamily="@font/arimo"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:layout_below="@+id/line"
+        android:text="No friends found! Please make some friends through match-up before using this feature." />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/usersList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/line"
         android:visibility="gone"/>
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#dfb992"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:weightSum="100"
+        android:id="@+id/btnHome"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@id/btnAddAppt">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="55"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/home"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="45"
+            android:text="HOME"
+            android:textColor="#000000"
+            android:autoSizeTextType="uniform"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/hometext"
+            android:fontFamily="@font/titillium"/>
+
+    </LinearLayout>
+</RelativeLayout>
