@@ -161,6 +161,35 @@ public class HelpTabFragments {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View view = inflater.inflate(R.layout.help_chats_tab, container, false);
 
+            ImageView imghelpchats1, imghelpchats2, imghelpchats3;
+
+            imghelpchats1 = (ImageView)view.findViewById(R.id.imghelpchats1);
+            imghelpchats2 = (ImageView)view.findViewById(R.id.imghelpchats2);
+            imghelpchats3 = (ImageView)view.findViewById(R.id.imghelpchats3);
+
+            String text1 = "The Chats function allows you to chat with friends that you have made in Patch through the match-up function.\nTo access the chats function, go to 'CHATS' in the Home Page.";
+            String text2 = "Then, you will see a list of friends that you have made in Patch. First, let's click on John Lim to chat with him.\n\nSee none? Don't worry, refer to the 'MATCH-UP' manual to learn how to make friends in Patch!";
+            String text3 = "Here, you and John Lim can send messages to one another as seen in the photo. Have fun chatting with the friends you have made in Patch!\n\nWith that, you have learnt all about the Chats function!";
+
+            if (MainActivity.language.equals("Chinese")) {
+                text1 = "好友对话功能可以让您和从配对功能结识的 Patch 好友聊天/对话。\n想使用这个功能的话，请点击主页的‘好友对话’。";
+                text2 = "然后，您将会看到您的好友列表。首先，请点击 John Lim 方可与他对话。\n\n您的好友列表是空的吗？不用担心，请看‘配对’的使用手册来进一步地了解如何在 Patch 交到好友！";
+                text3 = "在这里，就跟图中一样，您将可以和 John Lim 互相发送信息。快点在 Patch 认识一些好友，然后跟他们进行聊天吧！\n\n您已学会如何使用好友对话功能了耶！‘好友对话’使用手册就在此结束了！";
+
+                imghelpchats1.setImageResource(R.drawable.help_chats_1_ch);
+                imghelpchats2.setImageResource(R.drawable.help_chats_2_ch);
+                imghelpchats3.setImageResource(R.drawable.help_chats_3_ch);
+            }
+
+            TextView txthelpchats1 = (TextView)view.findViewById(R.id.txthelpchats1);
+            txthelpchats1.setText(text1);
+
+            TextView txthelpchats2 = (TextView)view.findViewById(R.id.txthelpchats2);
+            txthelpchats2.setText(text2);
+
+            TextView txthelpchats3 = (TextView)view.findViewById(R.id.txthelpchats3);
+            txthelpchats3.setText(text3);
+
             return view;
         }
     }
