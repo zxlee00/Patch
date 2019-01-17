@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/segoeui"
-            android:text="Confirm Delete"
+            android:text="Confirm Deactivate"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
