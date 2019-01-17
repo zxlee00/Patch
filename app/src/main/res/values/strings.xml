@@ -6,4 +6,6 @@
     <string name="tab_text_3">Tab 3</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="join_the_team_register_here">Join the team! Register <u>here</u></string>
+    <string name="you_are_part_of_our_team_now_return_to_login_page_to_sign_in_again">You are part of our team now! <br /> Return to Login page to sign in again.</string>
 </resources>

@@ -110,10 +110,33 @@
         <activity
             android:name=".PatchOnBoardingActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".HelpActivity" />
-        <activity android:name=".MatchUpUserInformation" />
-        <activity android:name=".LanguageActivity" />
-        <activity android:name=".OnBoardingLanguageActivity"></activity>
+        <activity android:name=".HelpActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MatchUpUserInformation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LanguageActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".OnBoardingLanguageActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity android:name=".AdminMenuActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AdminLoginActivity"
+            android:screenOrientation="portrait">
+<!--            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+        <activity android:name=".AdminDeleteUserActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AdminRegisterActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".AdminConfirmationActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
